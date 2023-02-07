@@ -5,7 +5,7 @@ const categoryShema = new Schema(
     {
         name: {
 			type: String,
-			required: [true, 'Please provide a title'],
+			requiere: true,
 		},
 		
 		status: {

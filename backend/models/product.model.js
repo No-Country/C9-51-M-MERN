@@ -5,18 +5,22 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     title: {
         type: String,
+        requiere: true,
         allowNull: false,
       },
       description: {
         type: String,
+        requiere: true,
         allowNull: false,
       },
       quantity: {
-        type: INTEGER,
+        type: Number,
+        requiere: true,
         allowNull: false,
       },
       price: {
-        type: DataTypes.DECIMAL,
+        type: Number,
+        requiere: true,
         allowNull: false,
       },
       categoryId: {
