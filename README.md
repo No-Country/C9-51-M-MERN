@@ -8,7 +8,7 @@ Maximiliano Navarro Cestau - UXUI
 Jorge Herrera - BackEnd
 Miguel Viloria - BackEnd
 Alexander Windecker - FrontEnd
-Nadia Franco Tarruella - FrontEnd
+Victor Olivera  - FrontEnd
 Antonela Bonaglia  - FrontEnd
 Catalina Armella - QA
 Marcelo Agustin Lopez Ramallo - QA
