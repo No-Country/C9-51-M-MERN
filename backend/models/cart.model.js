@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 
 const cartSchema = new Schema({
     userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type :mongoose.Schema.ObjectId,
+        ref: "User",
 
       },
       
       status: {
         type: String,
-		default: 'active'
+		    default: 'active'
             
       },
 });

@@ -8,13 +8,13 @@ const productImgSchema = new Schema({
         allowNull: false,
       },
       productId: {
-        type: Number,
+        type: mongoose.Schema.ObjectId,
         requiere: true,
-        allowNull: false,
+        ref: 'Product',
       },
       status: {
         type: String,
-		default: 'active',
+		   default: 'active',
       },
 });
 
