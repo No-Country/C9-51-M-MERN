@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 import logoNav from "../assets/images/LogoNav.webp"
 import {BsBoxSeam} from "react-icons/bs"
+import {IoPersonOutline} from "react-icons/io5"
+import {FiShoppingCart} from "react-icons/fi"
 // import BotonHamburguesa from "./BotonHamburguesa"
 // import Contador from "./Contador"
 
@@ -22,15 +24,17 @@ const Navigation = () => {
         </LogoContainer>
   
         <LinksContenedor open={expand}>
+
+          
   
           <NavLink to="/bebidas" className="navItem" onClick={() => setExpand(!expand)}>
-            <BsBoxSeam /> Productos</NavLink>
+            <BsBoxSeam/> Productos</NavLink>
   
           <NavLink to="/nosotros" className="navItem" onClick={() => setExpand(!expand)}>
-            Mi cuenta</NavLink>
+            <IoPersonOutline/> Mi cuenta</NavLink>
   
           <NavLink to="/gift" className="navItem" onClick={() => setExpand(!expand)}>
-            Carrito</NavLink>
+            <FiShoppingCart/> Carrito</NavLink>
   
         </LinksContenedor>
   
@@ -94,7 +98,7 @@ const Navigation = () => {
       left: ${({ open }) => (open ? "0" : "-100%")};
       display: flex;
       align-items: flex-end; 
-      gap: 20px ;
+      gap: 35px ;
       transition: 0.5s all ease;
       z-index:9999;
       
@@ -103,14 +107,14 @@ const Navigation = () => {
         height: 100%;
         flex-direction: row;
         justify-content: space-evenly;
-        padding: 0.5rem;
+        /* padding: 0.5rem; */
         top: 0vh;
         background-color: transparent; 
        
       }
   
       @media screen and (min-width: 1200px){
-        padding: 0.8rem;
+        /* padding: 0.8rem; */
       }
     `;
   
