@@ -9,8 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(require('./routes'))
 
 app.get('/', (req, res) => {
-    res.send('Todo Ok');
-    console.log('Todo Bien');
+    res.send('its ok');
+    console.log('ok');
 });
 
 module.exports = app;

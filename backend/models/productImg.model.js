@@ -14,9 +14,9 @@ const productImgSchema = new Schema({
       },
       status: {
         type: String,
-		   default: 'active',
+		    default: 'active',
       },
 });
 
 module.exports = mongoose.model('ProductImg', productImgSchema);
-
+module.exports = { ProductImg }

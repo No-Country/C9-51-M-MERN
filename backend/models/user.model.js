@@ -2,10 +2,38 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true, minlength: 7 }
-    //colocar el estatus , super usuario
+    userName: { 
+        type: String,
+        required: true 
+
+    },
+
+    email: { 
+         type: String,
+         required: true 
+    },
+
+    password: { 
+        type: String,
+        required: true,
+        minlength: 7 
+
+    },
+
+    role: { 
+        type: String,
+        required: true , 
+        default: 'normal'
+    },
+
+    status: {
+        type: String,
+		default: 'active'
+    }
+
+        
+    
 });
-//Creo que seria bueno definir lo modelos con mayusculas al proncipip "User"
-module.exports = mongoose.model('user', userSchema);
+
+module.exports = mongoose.model('User', userSchema);
+module.exports = { User }

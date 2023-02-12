@@ -15,3 +15,4 @@ const categoryShema = new Schema({
 })
 
 module.exports = mongoose.model('Category', categoryShema);
+module.exports = { Category }

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { INTEGER } = require('sequelize');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
@@ -38,3 +37,4 @@ const productSchema = new Schema({
 });
 
 module.exports = mongoose.model('Product', productSchema);
+module.exports = { Product }
