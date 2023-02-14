@@ -7,33 +7,39 @@ const productSchema = new Schema({
         requiere: true,
         allowNull: false,
       },
-      description: {
+
+    description: {
         type: String,
         requiere: true,
         allowNull: false,
       },
-      quantity: {
+
+    quantity: {
         type: Number,
         requiere: true,
         allowNull: false,
       },
-      price: {
+
+    price: {
         type: Number,
         requiere: true,
         allowNull: false,
       },
-      categoryId: {
+
+    categoryId: {
         type: mongoose.Schema.ObjectId,
         ref: 'Category',
       },
-      userId: {
+    userId: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
-      },
-      status: {
+    },
+
+    status: {
         type: String,
         default: 'active',
-      },
+    },
+
 });
 
 module.exports = mongoose.model('Product', productSchema);
