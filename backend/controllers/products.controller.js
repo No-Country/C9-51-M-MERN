@@ -1,11 +1,12 @@
-const {Product} = require('../models/product.model');
-const {Category} = require('../models/category.model');
-const {User} = require('../models/category.model')
+const Product = require('../models/product.model');
+const Category = require('../models/category.model');
+const User = require('../models/category.model')
 
 const getAllProducts = (async (req, res, next) => {
+	
 	const products = await Product.findAll({
 		where: { status: 'active' },
-		include: [{ model: Category, include:{ model : User} }],
+		include: [{ model: Category }],
 	});
 	res.status(200).json({
 		status: 'success',
@@ -23,11 +24,12 @@ const getProductById = (async (req, res, next) => {
 });
 
 const createProduct = (async (req, res, next) => {
-	const { title, description,quantity,price } = req.body;
+	const { name, description, image, quantity, price } = req.body;
 
 	const newProduct = await Product.create({
-		title, 
+		name, 
         description,
+		image,
         quantity,
         price
 	});
@@ -38,10 +40,10 @@ const createProduct = (async (req, res, next) => {
 });
 
 const updateProduct = (async (req, res, next) => {
-	const { title, description, price } = req.body;
+	const { title, description, image, price } = req.body;
 	const { product } = req;
 
-	await product.update({ title, description, price });
+	await product.update({ title, description, image, price });
 
 	res.status(204).json({ status: 'success' });
 });

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-    title: {
+    name: {
         type: String,
         requiere: true,
         allowNull: false,
@@ -11,29 +11,27 @@ const productSchema = new Schema({
     description: {
         type: String,
         requiere: true,
-        allowNull: false,
+      },
+    
+    image: {
+        type: String,
+        requiere: true,
       },
 
     quantity: {
         type: Number,
         requiere: true,
-        allowNull: false,
       },
 
     price: {
         type: Number,
         requiere: true,
-        allowNull: false,
       },
 
     categoryId: {
         type: mongoose.Schema.ObjectId,
         ref: 'Category',
       },
-    userId: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-    },
 
     status: {
         type: String,
@@ -43,4 +41,3 @@ const productSchema = new Schema({
 });
 
 module.exports = mongoose.model('Product', productSchema);
-module.exports = { Product }

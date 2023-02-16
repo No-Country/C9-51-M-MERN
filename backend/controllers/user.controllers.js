@@ -3,29 +3,30 @@ const mongoose = require('mongoose');
 
 //Models
 
-const { User } = require('../models/user.model')
-const { Product } = require('../models/product.model');
-const { Cart } = require('../models/cart.model');
+const  User  = require('../models/user.model')
+const  Product  = require('../models/product.model');
+const Cart  = require('../models/cart.model');
 
 
 const getAllUsers = (async (req, res, next) => {
-    const users = await User.findAll({
-       include: [
-       { model: Product, include: { model: User, include: Cart } },
-            
-       ],
-    });
+    const users =  await User.find({
+		include: [
+		{ model: Product, include: { model: Cart } },
+	 		
+		],
+	 })
 
    res.status(200).json({
        status: 'success',
-       data:{users},
+	   users
+       
    });
 });
 
 const createUser = (async (req, res, next) => {
-	const { name, email, password , role } = req.body;
+	const { userName, email, password , role } = req.body;
 
-	const userExists = await User.findOne({ email });
+	const userExists = await User.findOne({ userName });
 
 	if (userExists) {
 		return next(('Email already taken', 400));
@@ -45,14 +46,30 @@ const createUser = (async (req, res, next) => {
 	});
 });
 
-const getUserById = (async (req, res, next) => {
-	const { user } = req;
-
-	res.status(200).json({
+const getUserById = async (req, res, next) => {
+	const userId = req.params.id;
+  
+	try {
+	  const user = await User.findById();
+  
+	  if (!user) {
+		return res.status(404).json({
+		  status: 'fail',
+		  message: 'Usuario no encontrado'
+		});
+	  }
+  
+	  res.status(200).json({
 		status: 'success',
-		data:{user},
-	});
-});
+		data: {
+		  user
+		}
+	  });
+  
+	} catch (error) {
+	  next(error);
+	}
+  };
 
 const updateUser = (async (req, res, next) => {
 	const { user } = req;
