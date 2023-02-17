@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navigation from "../components/Navigation"
-// import Main from "../components/Main"
+import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
+import Main from "../components/Main"
 // import Nosotros from "../components/Nosotros"
 // import Gift from "../components/Gift"
 // import Contacto from "../components/Contacto"
@@ -19,21 +20,20 @@ const Rutas = () => {
     return (
         <Router>
             <Navigation />
-            {/* <Routes>
+            <Routes>
                 <Route path="/" element={<Main />}/>
-                <Route path="/bebidas" element={<CardList/>}/>
+                {/* <Route path="/bebidas" element={<CardList/>}/>
                 <Route path="/nosotros" element={<Nosotros/>}/>
                 <Route path="/gift" element={<Gift/>}/>
                 <Route path="/contacto" element={<Contacto/>}/>
                 <Route path="/carro" element={<ShoppingCart/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="*" element={<Error404/>}/>
-            </Routes> */}
+                <Route path="*" element={<Error404/>}/> */}
+            </Routes>
             {/* <Footer /> */}
         </Router>
     )
 }
-
 
 
 export default Rutas

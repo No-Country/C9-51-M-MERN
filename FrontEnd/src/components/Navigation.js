@@ -5,6 +5,7 @@ import logoNav from "../assets/images/LogoNav.webp"
 import {BsBoxSeam} from "react-icons/bs"
 import {IoPersonOutline} from "react-icons/io5"
 import {FiShoppingCart} from "react-icons/fi"
+import ProductsSearch from './ProductsSearch'
 // import BotonHamburguesa from "./BotonHamburguesa"
 // import Contador from "./Contador"
 
@@ -20,12 +21,13 @@ const Navigation = () => {
   
         <LogoContainer>
           <NavLink to="/" className="navItem">
-            <img src={logoNav} alt="" height="90px" width="100px" /></NavLink>
+            <img src={logoNav} alt="Nutril Boost" />
+          </NavLink>
         </LogoContainer>
   
         <LinksContenedor open={expand}>
 
-          
+          <ProductsSearch /> 
   
           <NavLink to="/bebidas" className="navItem" onClick={() => setExpand(!expand)}>
             <BsBoxSeam/> Productos</NavLink>
@@ -50,7 +52,7 @@ const Navigation = () => {
             {/* <BotonHamburguesa /> */}
           </div>
         </IconosContenedor>
-  
+
       </NavContainer>
     )
   }
@@ -75,15 +77,12 @@ const Navigation = () => {
     `;
   
   const LogoContainer = styled.div`
-      width: 309px;
-      height: 92px;
-      border-radius: 5px;
-      background-color: #747474;
+      width: 207px;
+      height: 90px;
       position: absolute;
-      left: 0%;
-      right: 78.54%;
-      top: 17.14%;
-      bottom: 17.14%;
+      left: 10px;
+      top: 25px;
+      
   
       img{
         object-fit: scale-down;
@@ -101,7 +100,49 @@ const Navigation = () => {
       gap: 35px ;
       transition: 0.5s all ease;
       z-index:9999;
-      
+
+        .navItem {
+          text-decoration: none;
+          font-family: var(--title-font);
+          text-transform: uppercase;
+          font-weight: bold;
+          color: var(--beige);
+          text-align: center;
+          font-size: 20px;
+          /* padding: 15px 0; */
+          z-index: 2;
+          transition: all 1s ease-in-out ;
+        }
+        
+        @media (min-width:768px){
+          .navItem{
+            /* padding: 25px 0; */
+            font-size: 2rem;
+          }
+        }
+          @media (min-width: 1200px){
+            .navItem{
+              /* padding: 25px 0; */
+              font-size: 2.3rem;
+          }
+        }
+
+        .navItem:hover{
+          color: var(--beige);
+          text-decoration: underline;
+        }
+
+        .active{
+          text-decoration: underline;
+        }
+        
+        @media (min-width:768px){
+          .navItem{
+            /* padding: 25px 0; */
+            
+          }
+        }
+              
       @media screen and (min-width: 768px){
         position: initial;
         height: 100%;
