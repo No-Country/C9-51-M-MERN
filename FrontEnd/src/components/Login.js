@@ -1,31 +1,40 @@
 import React from 'react'
 import styled from "styled-components";
-import Eye from "../assets/images/Vector.png"
+import Visible from "../assets/images/Vector.png";
+import Hidden from "../assets/images/Vector2.png";
+import { useState } from 'react';
 
 const Login = ({onClose}) => {
+  const [eyeType, setEyeTipe] = useState(false);
 
   return (
-      <Container>
+    <Container>
       <FormField>
-       <ButtonClose onClick={onClose}>X</ButtonClose>
-      <Title>No has iniciado sesión</Title>
-      <InputField>
-      <Label>Mail de usuario</Label> 
-        <InputEmail placeholder='ejemplo@naturalboost.com'/>
-      </InputField>
-      <InputField>
-        <Label>Contraseña</Label>
-        <InputPassword placeholder='Debe tener al menos 8 caracteres'/>
-      </InputField>
-      <IconEye src={Eye}/>
-       <ButtonField>
-        <ButtonSession>Iniciar sesión</ButtonSession>
-        <ButtonRegister>Registrarme</ButtonRegister>
-       </ButtonField>  
-      <TextPassword>¿Olvidaste tu contraseña?</TextPassword>
+        <ButtonClose onClick={onClose}>X</ButtonClose>
+        <Title>No has iniciado sesión</Title>
+        <InputField>
+          <Label>Mail de usuario</Label>
+          <InputEmail placeholder="ejemplo@naturalboost.com" />
+        </InputField>
+        <InputField>
+          <Label>Contraseña</Label>
+          <InputPassword
+            placeholder="Debe tener al menos 8 caracteres"
+            type={eyeType ? "text" : "password"}
+          />
+          <IconEye
+            src={eyeType ? Visible : Hidden}
+            onClick={() => setEyeTipe(!eyeType)}
+          />
+        </InputField>
+        <ButtonField>
+          <ButtonSession>Iniciar sesión</ButtonSession>
+          <ButtonRegister>Registrarme</ButtonRegister>
+        </ButtonField>
+        <TextPassword>¿Olvidaste tu contraseña?</TextPassword>
       </FormField>
     </Container>
-    );    
+  );    
 }
 
 export default Login;
@@ -47,6 +56,13 @@ const ButtonClose = styled.button`
   &:hover {
   background: #747474;  
   color: #fff;
+  }
+
+  @media (max-width: 500px) {
+    margin-left: -10px;
+    margin-right: -10px ;
+    margin-top: -20px;
+    width: 20px;
   }
 `;
 
@@ -105,16 +121,36 @@ const FormField = styled.div`
   margin-top: 20px;
   padding: 40px;
   width: 420px;
+
+  @media (max-width: 500px) {
+    height: auto;
+    padding: 25px 15px;
+    width: 90%;
+  }
 `;
 
 const IconEye = styled.img`
   cursor: pointer;
-  float: right;
-  margin-right: 10px;
-  margin-top: -36px;
-  position: relative;
-  width: 2.5rem;
-  z-index: 2;
+  margin-top: 24px;
+  margin-left: 300px;
+  position: absolute;
+  width: 2rem;
+
+  @media (max-width: 400px) {
+   margin-right: 35px;
+  }
+
+  @media (max-width: 360px) {
+   margin-right: 70px;
+  }
+
+  @media (max-width: 320px) {
+   margin-right: 90px;
+  }
+
+  @media (max-width: 320px) {
+   margin-right: 110px;
+  }
 `
 
 const InputEmail = styled.input`
