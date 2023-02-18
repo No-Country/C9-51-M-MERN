@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import CardContainer from "./CartView/CardContainer";
+import CartView from "./CartView/CartView";
 
 function App() {
   return (
     <>
-      
+      <CartView />
+      <CardContainer />
     </>
   );
 }
