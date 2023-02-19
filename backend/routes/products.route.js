@@ -18,14 +18,18 @@ const {
 
 
 
-const router = express.Router();
+const productRouter = express.Router();
 
-router.get('/product', getAllProducts);
-router.patch('/:id',updateProduct);
-router.delete('/:id',deleteProduct)
-router.get('/product/:id', getProductById);
+productRouter.get('/', getAllProducts);
+productRouter.post('/createproducts',createProduct);
+productRouter.patch('/:id',updateProduct);
+productRouter.delete('/:id',deleteProduct)
+productRouter.get('/:id', getProductById);
 
-//router.post('/', /* validacion de producto*/createProduct);
+
+module.exports = productRouter ;
+
+
 
 //router.post('/categories', createCategory);
 //router.get('/categories', getAllCategories);

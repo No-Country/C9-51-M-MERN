@@ -47,7 +47,7 @@ const getAllUsers = (async (req, res, next) => {
 });
 
 const createUser = (async (req, res, next) => {
-	const { userName, email, password , role } = req.body;
+	const { userName, email, password , isAdmin } = req.body;
 
 	const userExists = await User.findOne({ userName });
 
@@ -59,7 +59,7 @@ const createUser = (async (req, res, next) => {
 		userName,
 		email,
 		password,
-		role
+		isAdmin
 	});
 
 	await newUser.save()
@@ -181,7 +181,7 @@ const login = async (req, res, next) => {
 	  const isPasswordValid = await bcrypt.compare(password, user.password);
 	  if (!isPasswordValid) {
 		return res.status(401).json({
-		  status: 'fail',
+		  status: 'failure',
 		  message: 'Credenciales inválidas'
 		});
 	  }

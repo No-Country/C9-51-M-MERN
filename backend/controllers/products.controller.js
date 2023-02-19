@@ -2,26 +2,40 @@ const Product = require('../models/product.model');
 const Category = require('../models/category.model');
 const User = require('../models/category.model')
 
-const getAllProducts = (async (req, res, next) => {
-	
-	const products = await Product.findAll({
-		where: { status: 'active' },
-		include: [{ model: Category }],
-	});
-	res.status(200).json({
-		status: 'success',
-		products,
-	});
-});
+const getAllProducts = async (req, res, next) => {
+    try {
+        const products = await Product.find().populate('categoryId');
 
-const getProductById = (async (req, res, next) => {
-	const { products } = req;
+        res.status(200).json({
+            status: 'success',
+            products
+        });
+    } catch (error) {
+        next(error);
+    }
+};
 
-	res.status(200).json({
+const getProductById = async (req, res, next) => {
+	const productId = req.params.id;
+  
+	try {
+	  const product = await Product.findById(productId);
+  
+	  if (!product) {
+		return res.status(404).json({
+		  status: 'fail',
+		  message: 'Product not found',
+		});
+	  }
+  
+	  res.status(200).json({
 		status: 'success',
-		data: { training },
-	});
-});
+		data: { product },
+	  });
+	} catch (err) {
+	  next(err);
+	}
+  };
 
 const createProduct = (async (req, res, next) => {
 	const { name, description, image, quantity, price } = req.body;
@@ -40,12 +54,20 @@ const createProduct = (async (req, res, next) => {
 });
 
 const updateProduct = (async (req, res, next) => {
-	const { title, description, image, price } = req.body;
+	
+	const productId = req.params.id 
+	const { name, description, image, quantity, price, status } = req.body;
 	const { product } = req;
 
-	await product.update({ title, description, image, price });
+	await Product.findByIdAndUpdate(productId,{ name, 
+		description, 
+		image, 
+		quantity, 
+		price, 
+		status 
+	});
 
-	res.status(204).json({ status: 'success' });
+	res.status(204).json({ message: 'Product updated successfully' });
 });
 
 const deleteProduct = (async (req, res, next) => {
