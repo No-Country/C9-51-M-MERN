@@ -6,16 +6,12 @@
   --dark35: #2629285a;
   --dark10: #2629281a;
   --dark65: #262928a6;
-  --green: #75A971;
-  --violet: #9073A9;
-  --yellow: #E4BD52;
-  --orange: #ef8456;
+  --orange: #E16913;
+  --liOrange: #f5934d;
   --orange75: #ef8557bf;
-  --pink: #EA7472;
-  --beige: rgb(251, 243, 232);
+  --beige: #fbf3e8;
+  --grey: #dfdede;
   --title-font: 'Poppins', sans-serif;
-  --subtitle-font: 'Roboto', sans-serif;
-  --text-font: 'Montserrat', sans-serif;
   }
 
 * {
