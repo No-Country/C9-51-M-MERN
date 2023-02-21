@@ -3,13 +3,15 @@ import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 import logoNav from "../assets/images/LogoNav.webp"
 import {BsBoxSeam} from "react-icons/bs"
+import Modal from "./Modal";
+import Login from "./Login";
 // import BotonHamburguesa from "./BotonHamburguesa"
 // import Contador from "./Contador"
 
 
 
 const Navigation = () => {
-
+  const [show, setShow] = useState(false);
     const [expand, setExpand] = useState(false)
   
 
@@ -25,10 +27,17 @@ const Navigation = () => {
   
           <NavLink to="/bebidas" className="navItem" onClick={() => setExpand(!expand)}>
             <BsBoxSeam /> Productos</NavLink>
-  
+ 
           <NavLink to="/nosotros" className="navItem" onClick={() => setExpand(!expand)}>
-            Mi cuenta</NavLink>
-  
+            Mi cuenta</NavLink> 
+    
+          <NavLink to="/login" className="navItem" onClick={() => setShow(true)}>
+            Login</NavLink>
+
+            <Modal show={show} onClose={() => setShow(false)}>
+              <Login show={show} onClose={() => setShow(false)} />
+            </Modal>
+          
           <NavLink to="/gift" className="navItem" onClick={() => setExpand(!expand)}>
             Carrito</NavLink>
   

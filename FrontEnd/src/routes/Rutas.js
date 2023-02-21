@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navigation from "../components/Navigation"
+// import TarjetaCD from "../components/TarjetaCD"
 // import Main from "../components/Main"
 // import Nosotros from "../components/Nosotros"
 // import Gift from "../components/Gift"
@@ -27,6 +28,7 @@ const Rutas = () => {
                 <Route path="/contacto" element={<Contacto/>}/>
                 <Route path="/carro" element={<ShoppingCart/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/tarjetacd" element={<TarjetaCD/>}/>
                 <Route path="*" element={<Error404/>}/>
             </Routes> */}
             {/* <Footer /> */}
