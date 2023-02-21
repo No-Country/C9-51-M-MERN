@@ -11,11 +11,7 @@ import Navigation from "../components/Navigation"
 // import Footer from "../components/Footer/Footer"
 // import CardList from "../components/CardList"
 
-
-
-
 const Rutas = () => {
-
 
     return (
         <Router>
@@ -35,7 +31,5 @@ const Rutas = () => {
         </Router>
     )
 }
-
-
 
 export default Rutas
