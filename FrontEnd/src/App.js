@@ -1,11 +1,5 @@
-import ProductsProvider from "./context/ProductsProvider";
-import Rutas from "./routes/Rutas"
-
-
-
-
-
-
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
 
