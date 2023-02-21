@@ -1,11 +1,14 @@
-//import CardContainer from "./CartView/CardContainer";
-//import CartView from "./CartView/CartView";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
+
   return (
-    <>
-      
-    </>
+    <Rutas/>
+    // <ProductsProvider>
+    //   <Rutas/>
+    // </ProductsProvider>
+
   );
 }
 
