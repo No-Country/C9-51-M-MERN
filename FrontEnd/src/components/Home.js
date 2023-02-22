@@ -13,8 +13,10 @@ export default Home
 
 
 const HomeSection = styled.div`
+
   width: 100%;
   height: 100%;
-  position: relative;
-  top: 140px;
+  max-height: 90vh;
+ 
+
 `;

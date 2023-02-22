@@ -111,9 +111,10 @@ const ContainerInput = styled.form`
   right: 0;
   display: flex;
   justify-content: flex-end;
- 
   border-radius: 3px;
-  border: solid 1px #d3cfcf;
+  border: solid 1px var(--beige);
+  position: relative;
+  top: -20px;
 
   input {
     font-size: 12px;
@@ -136,9 +137,8 @@ const ContainerInput = styled.form`
 `;
 const Butt = styled.button`
   color: #d3cfcf;
-  background-color: #faaa7292;
+  background-color: #ffa15eda;
   border: none;
-  border-radius: 3px;
   padding: 7px;
 
   @media screen and (min-width: 1024px) {

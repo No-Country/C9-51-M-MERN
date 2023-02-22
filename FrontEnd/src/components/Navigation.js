@@ -18,7 +18,6 @@ const Navigation = () => {
 
     return (
       <NavContainer>
-  
         <LogoContainer>
           <NavLink to="/" className="navItem">
             <img src={logoNav} alt="Nutril Boost" />
@@ -26,18 +25,16 @@ const Navigation = () => {
         </LogoContainer>
   
         <LinksContenedor open={expand}>
-
           <ProductsSearch /> 
   
           <NavLink to="/bebidas" className="navItem" onClick={() => setExpand(!expand)}>
-            <BsBoxSeam/> Productos</NavLink>
+            <BsBoxSeam style={{color:" var(--beige)"}}/> Productos</NavLink>
   
           <NavLink to="/nosotros" className="navItem" onClick={() => setExpand(!expand)}>
-            <IoPersonOutline/> Mi cuenta</NavLink>
+            <IoPersonOutline style={{color:" var(--beige)"}}/> Mi cuenta</NavLink>
   
           <NavLink to="/gift" className="navItem" onClick={() => setExpand(!expand)}>
-            <FiShoppingCart/> Carrito</NavLink>
-  
+            <FiShoppingCart style={{color:" var(--beige)"}}/> Carrito</NavLink>  
         </LinksContenedor>
   
   
@@ -52,7 +49,6 @@ const Navigation = () => {
             {/* <BotonHamburguesa /> */}
           </div>
         </IconosContenedor>
-
       </NavContainer>
     )
   }
@@ -61,20 +57,20 @@ const Navigation = () => {
   
   const NavContainer = styled.nav`
       background-color: #181818;
-      position: absolute;
-      left: 0%;
-      right: 0%;
+      position: sticky;
+      z-index: 9999;
+      /* left: 0%;
+      right: 0%; */
       top: 0%;
-      bottom: 0%;
+      /* bottom: 0%; */
       width: 1440px;
       height: 140px;
-      
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
       padding: 1%;
-     
-    `;
+      border-bottom: solid 0.3px var(--beige);
+    `
   
   const LogoContainer = styled.div`
       width: 207px;
@@ -105,13 +101,15 @@ const Navigation = () => {
           text-decoration: none;
           font-family: var(--title-font);
           text-transform: uppercase;
-          font-weight: bold;
+          font-weight: bolder;
           color: var(--beige);
           text-align: center;
           font-size: 20px;
           /* padding: 15px 0; */
           z-index: 2;
-          transition: all 1s ease-in-out ;
+          transition: all 0.5s ease-in-out ;
+          position: relative;
+          top: -20px;
         }
         
         @media (min-width:768px){
@@ -126,15 +124,11 @@ const Navigation = () => {
               font-size: 2.3rem;
           }
         }
-
         .navItem:hover{
           color: var(--beige);
-          text-decoration: underline;
+          text-decoration: dotted;
         }
-
-        .active{
-          text-decoration: underline;
-        }
+        
         
         @media (min-width:768px){
           .navItem{

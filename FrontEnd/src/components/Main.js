@@ -1,5 +1,5 @@
 import styled from "styled-components"
-//import CardList from "./cards/CardList"
+import CardList from "./CardList"
 // import OwlCarrousel from "./OwlCarrousel"
 // import Nosotros from "./Nosotros"
 // import Oportunidades from "./Oportunidades"
@@ -11,7 +11,7 @@ const Main = () => {
     return (
         <MainDiv>
             <Home />
-            {/* <CardList /> */}
+            <CardList />
             {/* <Nosotros /> */}
             {/* <OwlCarrousel />
             <Oportunidades/> */}
