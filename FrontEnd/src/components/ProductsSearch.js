@@ -63,7 +63,6 @@ const ProductsSearch = () => {
         <Form.Control
           placeholder="Buscar productos, marcas y más..."
           aria-label="Buscar productos, marcas y más..."
-          aria-describedby="basic-addon2"
           value={busqueda}
           maxLength={120}
           autoCapitalize="off"
