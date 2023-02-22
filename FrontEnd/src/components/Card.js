@@ -26,7 +26,7 @@ const Card = ({ product }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-    const {id, nombre, descripcion, precio, bgColor, colorPrecio, bgColorBoton, image} = product
+    const {id, nombre, descripcion, precio, image} = product
 
     return (
         <>
@@ -39,13 +39,13 @@ const Card = ({ product }) => {
                 <PrecioS>$ <p>{precio}</p></PrecioS>
                 {/* <ButtAddProduct onClick={()=>{addToCart(id); handleShow(); closeModal()}} bgColorBoton={bgColorBoton}> */}
                 <ContainerButt>
-                    <BuyProduct onClick={()=> handleShow()} bgColorBoton={bgColorBoton}> Comprar</BuyProduct>
-                    <AddProduct onClick={()=> handleShow()} bgColorBoton={bgColorBoton}> Agregar al Carrito</AddProduct>
+                    <Link to="/description" className='link' > Comprar</Link>
+                    <AddProduct onClick={()=> handleShow()}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
             </CardContainer>
 
             <Modal key={id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
-                style={{height: '370px'}}>
+                style={{height: '370px', zIndex: 9999}}>
                     <ModHeader  closeButton>
                     ¡El producto fue añadido con éxito!
                     </ModHeader>
@@ -78,98 +78,6 @@ const Card = ({ product }) => {
 export default Card
 
 
-/**** Styles ModalAddCart ****/
-const ModHeader = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 15px;
-    color: var(--dark80);
-    font-family: 'poppins';
-    font-size: 20px;
-    font-weight: 800;
-    
-`
-const ModBody = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
-    text-align: center;
-    margin: 0px 30px;
-`
-const ModText = styled.p`
-    text-align: center;
-    padding: auto;
-    margin: auto;
-    color: var(--dark65);
-`
-const ModPrecio = styled.p`
-    font-family:'Satisfy', cursive;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-
-   p{
-    font-size: 18px;
-    padding: 5px;
-    position: relative;
-    top: -5px;
-   }
-`
-const ModImg = styled.img`
-    width: 180px;
-    height: auto;
-` 
-const ButtonCart = styled.button`
-    color:white;
-    background-color: var(--orange);
-    margin: 10px;
-    padding: 5px;
-    border-radius: 0.5rem;
-    border: none;
-    font-family: "Nunito", sans-serif;
-    font-size: 12px;
-    text-align: center;
-    width:auto;
-    height: 28px;
-    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 12px 0 rgba(0,0,0,0.19);
-
-  @media screen and (min-width: 1024px){
-  &:hover{background-color: #999898 !important;}}
-
-  &:active {
-    background-color: var(--orange) !important;
-    box-shadow: none;
-    transform: translateY(4px);}
-`
-const ButtonShop = styled.button`
-    margin: 10px;
-    padding: 5px;
-    border-radius: 0.5rem;
-    border: 1px solid var(--orange);
-    color: var(--orange) ;
-    background-color: var(--beige);
-    font-family: "Nunito", sans-serif;
-    font-size: 12px;
-    text-align: center;
-    width:auto;
-    height: 28px;
-    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 12px 0 rgba(0,0,0,0.19);
-
-  @media screen and (min-width: 1024px){
-  &:hover{background-color: #999898 !important;
-   color: var(--beige) ;
-   border: 1px solid #999898;}
-
-  &:active {
-    background-color: var(--orange) !important;
-    box-shadow: none;
-    transform: translateY(4px);
-    display: flex;}
-  }
-`
 
 /**** Styles Container ****/
 const CardContainer = styled.figure`
@@ -184,20 +92,6 @@ const CardContainer = styled.figure`
     margin: 20px;
     padding: 35px 20px 20px 20px;
     cursor: pointer;
-
-    /* border: 0.15rem solid var(--orange);
-    box-sizing: border-box;
-    text-align:center;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items:center;
-    border-radius:1rem;
-    overflow:hidden;
-    margin:3rem;
-    padding-bottom:4rem;
-    box-shadow:rgba(0, 0, 0, 0.3) 6px 8px 5px; */
-    
 `
 
 /**** Styles Cards ****/
@@ -242,11 +136,6 @@ const Nombres = styled.div`
 
 `
 const Nombre = styled.h3`
-    /* padding-top: 25px;
-    color: var(--dark);
-    font-family: 'Carter One', cursive;
-    font-size: 21px; */
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -255,11 +144,6 @@ const Nombre = styled.h3`
     color: #181818;
 `
 const Tipo = styled.p`
-    /* color: var(--dark);
-    font-family:'Satisfy', cursive;
-    font-size: 18px;
-    font-weight: 200; */
-  
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
@@ -374,34 +258,36 @@ const Info = styled.p`
 const ContainerButt= styled.div`
     display: flex;
     flex-direction: row;
-`
 
-const BuyProduct= styled.button`
-    background: #D9D9D9;
-    border-radius: 5px;
-    color:white;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 24px;
-    color: #000000; 
-    margin-right:7px;
-    position: relative;
-    top: -10px;
-    border: none;
-    width: 99px;
-    height:36px;
-    text-align: center;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
+    .link{
+        text-decoration: none;
+        background: #D9D9D9;
+        border-radius: 5px;
+        color:white;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000; 
+        padding: 7px 0; 
+        margin-right:7px;
+        position: relative;
+        top: -10px;
+        border: none;
+        width: 99px;
+        height:36px;
+        text-align: center;
+        box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
 
-    @media screen and (min-width: 1024px){
-    &:hover{background-color: #999898 !important;}}
+        @media screen and (min-width: 1024px){
+        &:hover{background-color: #999898 !important;}}
 
-    &:active {
-        background-color: var(--orange) !important;
-        box-shadow: none;
-        transform: translateY(4px);}
+        &:active {
+            background-color: var(--orange) !important;
+            box-shadow: none;
+            transform: translateY(4px);}
+        }
 `
 const AddProduct= styled.button`
     background: var(--orange);
@@ -430,3 +316,97 @@ const AddProduct= styled.button`
         box-shadow: none;
         transform: translateY(4px);}
 `
+
+/**** Styles ModalAddCart ****/
+const ModHeader = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 15px;
+    color: var(--dark80);
+    font-family: 'poppins';
+    font-size: 20px;
+    font-weight: 800;
+    
+`
+const ModBody = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    text-align: center;
+    margin: 0px 30px;
+`
+const ModText = styled.p`
+    text-align: center;
+    padding: auto;
+    margin: auto;
+    color: var(--dark65);
+`
+const ModPrecio = styled.p`
+    font-family:'Satisfy', cursive;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+   p{
+    font-size: 18px;
+    padding: 5px;
+    position: relative;
+    top: -5px;
+   }
+`
+const ModImg = styled.img`
+    width: 180px;
+    height: auto;
+` 
+const ButtonCart = styled.button`
+    color:white;
+    background-color: var(--orange);
+    margin: 10px;
+    padding: 5px;
+    border-radius: 0.5rem;
+    border: none;
+    font-family: "Nunito", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    width:auto;
+    height: 28px;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 12px 0 rgba(0,0,0,0.19);
+
+  @media screen and (min-width: 1024px){
+  &:hover{background-color: #999898 !important;}}
+
+  &:active {
+    background-color: var(--orange) !important;
+    box-shadow: none;
+    transform: translateY(4px);}
+`
+const ButtonShop = styled.button`
+    margin: 10px;
+    padding: 5px;
+    border-radius: 0.5rem;
+    border: 1px solid var(--orange);
+    color: var(--orange) ;
+    background-color: var(--beige);
+    font-family: "Nunito", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    width:auto;
+    height: 28px;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 12px 0 rgba(0,0,0,0.19);
+
+  @media screen and (min-width: 1024px){
+  &:hover{background-color: #999898 !important;
+   color: var(--beige) ;
+   border: 1px solid #999898;}
+
+  &:active {
+    background-color: var(--orange) !important;
+    box-shadow: none;
+    transform: translateY(4px);
+    display: flex;}
+  }
+`
+
