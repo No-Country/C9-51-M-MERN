@@ -64,7 +64,7 @@ const Navigation = () => {
   const NavContainer = styled.nav`
       background-color: var(--dark);
       position: sticky;
-      z-index: 9999;
+      z-index: 999;
       /* left: 0%;
       right: 0%; */
       top: 0%;

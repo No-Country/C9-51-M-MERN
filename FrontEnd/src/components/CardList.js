@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import Card from "./Card";
 import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider"
+import Description from "./Description";
 
 
 const CardList = () => {
@@ -74,7 +75,7 @@ const CardList = () => {
     return (
         <CardsContainer>
             {products.map((product) => (
-                <Card key={product.id} product={product} />))}
+                <Card key={product.id} product={product}  />))}
         </CardsContainer>
     );
 };
