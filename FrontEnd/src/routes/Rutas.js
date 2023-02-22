@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navigation from "../components/Navigation"
 import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
 import Main from "../components/Main"
+import CardList from "../components/CardList"
+
 // import Nosotros from "../components/Nosotros"
 // import Gift from "../components/Gift"
 // import Contacto from "../components/Contacto"
@@ -22,13 +24,14 @@ const Rutas = () => {
             <Navigation />
             <Routes>
                 <Route path="/" element={<Main />}/>
-                {/* <Route path="/bebidas" element={<CardList/>}/>
-                <Route path="/nosotros" element={<Nosotros/>}/>
-                <Route path="/gift" element={<Gift/>}/>
-                <Route path="/contacto" element={<Contacto/>}/>
-                <Route path="/carro" element={<ShoppingCart/>}/>
+                <Route path="/products" element={<CardList/>}/>
+                {/* 
                 <Route path="/login" element={<Login/>}/>
-                <Route path="*" element={<Error404/>}/> */}
+                <Route path="/carro" element={<ShoppingCart/>}/>
+                <Route path="/compra" element={</>}/>
+                <Route path="/endCompra" element={</>}/>
+                <Route path="/detalleProducto" element={<Nosotros/>}/>
+                <Route path="*" element={<Error404/>}/>  */}
             </Routes>
             {/* <Footer /> */}
         </Router>

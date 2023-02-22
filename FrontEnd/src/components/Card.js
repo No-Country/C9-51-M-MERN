@@ -60,12 +60,12 @@ const Card = ({ product }) => {
                         </ModBody>
                     </Modal.Body>
                     <Modal.Footer >
-                        <Link to="/carro" className="modCart" onClick={handleClose} >
+                        <Link to="/cart" className="modCart" onClick={handleClose} >
                             <ButtonCart variant="secondary" >
                                 VER CARRITO
                             </ButtonCart>
                         </Link>
-                        <Link to="/bebidas" className="modCart" onClick={handleClose} >
+                        <Link to="/products" className="modCart" onClick={handleClose} >
                             <ButtonShop variant="primary" >
                                 CONTINUAR COMPRANDO
                             </ButtonShop>
@@ -249,7 +249,7 @@ const Nombre = styled.h3`
 
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 24px;
     line-height: 36px;
     color: #181818;
@@ -262,7 +262,7 @@ const Tipo = styled.p`
   
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 16px;
     line-height: 24px;
     color: #181818;
@@ -271,7 +271,7 @@ const Tipo = styled.p`
 const PrecioS = styled.p`
 font-family: 'Poppins';
 font-style: normal;
-font-weight: 600;
+font-weight: 400;
 font-size: 20px;
 line-height: 45px;
 text-align: center;
@@ -282,7 +282,7 @@ justify-content: center;
     
 
   p{
-    font-weight: 600;
+    font-weight: 400;
     font-size: 28px;
     padding-top: -28px;
 
@@ -409,7 +409,7 @@ const AddProduct= styled.button`
     color:white;
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: #ffffff; 
