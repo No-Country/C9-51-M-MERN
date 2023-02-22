@@ -55,10 +55,13 @@ const createUser = (async (req, res, next) => {
 		return next(('Email already taken', 400));
 	};
 
+    const salt = await bcrypt.genSalt(10)
+	const passwordEncripted = await bcrypt.hash(password,salt)
+
 	const newUser = new User({
 		userName,
 		email,
-		password,
+		password :passwordEncripted,
 		isAdmin
 	});
 
@@ -188,10 +191,10 @@ const login = async (req, res, next) => {
   
 	  // Crear el token JWT y enviar la respuesta
 	  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-		expiresIn: process.env.JWT_EXPIRES_IN
+		expiresIn: '24h'
 	  });
 
-	  console.log("token");
+	  
   
 	  res.status(200).json({
 		status: 'success',

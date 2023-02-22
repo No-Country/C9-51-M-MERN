@@ -70,15 +70,19 @@ const updateProduct = (async (req, res, next) => {
 	res.status(204).json({ message: 'Product updated successfully' });
 });
 
-const deleteProduct = (async (req, res, next) => {
-	const { product } = req;
-
-	await product.update({ status: 'deleted' });
- 
-	res.status(204).json({
+const deleteProduct = async (req, res, next) => {
+	try {
+	  const productId = req.params.id;
+  
+	  await Product.findByIdAndDelete(productId);
+  
+	  res.status(204).json({
 		status: 'success',
-	});
-});
+	  });
+	} catch (error) {
+	  next(error);
+	}
+  };
 
 
 module.exports = {

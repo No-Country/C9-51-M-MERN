@@ -17,13 +17,13 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const usersRoutes = require('./routes/users.route')
 const productRoutes = require('./routes/products.route')
-
+const categoryRouter = require('./routes/category.route')
 //Config express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/users',usersRoutes)
-
 app.use('/products',productRoutes)
+app.use('/category',categoryRouter)
 
 
 app.listen(8000,()=>{
