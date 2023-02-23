@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navigation from "../components/Navigation"
-import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
+// import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
 import Main from "../components/Main"
 import CardList from "../components/CardList"
 import Description from "../components/Description"
-//import Login from "../components/Login"
-
 
 
 // import TarjetaCD from "../components/TarjetaCD"
@@ -24,10 +22,10 @@ const Rutas = () => {
         <Router>
             <Navigation />
             <Routes>
-                {/* <Route path="/" element={<Main />}/>
+                <Route path="/" element={<Main />}/>
                 <Route path="/products" element={<CardList/>}/>
-                <Route path="/description" element={<Description/>}/> */}
-                {/* <Route path="/login" element={<Login/>}/> */}
+                <Route path="/description" element={<Description/>}/>
+                
 
                 {/* 
                 <Route path="/carro" element={<ShoppingCart/>}/>
