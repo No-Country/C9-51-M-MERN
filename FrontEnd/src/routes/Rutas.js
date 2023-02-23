@@ -7,6 +7,10 @@ import Description from "../components/Description"
 //import Login from "../components/Login"
 
 
+
+// import TarjetaCD from "../components/TarjetaCD"
+// import Main from "../components/Main"
+
 // import Nosotros from "../components/Nosotros"
 // import Contacto from "../components/Contacto"
 // import ShoppingCart from "../components/shopping/ShoppingCart"
@@ -14,32 +18,32 @@ import Description from "../components/Description"
 // import Footer from "../components/Footer/Footer"
 
 
-
-
-
 const Rutas = () => {
-
 
     return (
         <Router>
             <Navigation />
             <Routes>
-                <Route path="/" element={<Main />}/>
+                {/* <Route path="/" element={<Main />}/>
                 <Route path="/products" element={<CardList/>}/>
-                <Route path="/description" element={<Description/>}/>
+                <Route path="/description" element={<Description/>}/> */}
                 {/* <Route path="/login" element={<Login/>}/> */}
 
                 {/* 
                 <Route path="/carro" element={<ShoppingCart/>}/>
+              
                 <Route path="/compra" element={</>}/>
                 <Route path="/endCompra" element={</>}/>
                 <Route path="/detalleProducto" element={</>}/>
-                <Route path="*" element={<Error404/>}/>  */}
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/tarjetacd" element={<TarjetaCD/>}/>
+                <Route path="*" element={<Error404/>}/>
+            <Route path="*" element={<Error404/>}/>  */}
             </Routes>
+
             {/* <Footer /> */}
         </Router>
     )
 }
-
 
 export default Rutas
