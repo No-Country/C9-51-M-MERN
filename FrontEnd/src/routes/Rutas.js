@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation"
 import Main from "../components/Main"
 import CardList from "../components/CardList"
 import Description from "../components/Description"
+import CrudApi from "../components/CrudApi"
 
 
 // import TarjetaCD from "../components/TarjetaCD"
@@ -21,24 +22,19 @@ const Rutas = () => {
     return (
         <Router>
             <Navigation />
+            <CrudApi />
             <Routes>
                 <Route path="/" element={<Main />}/>
                 <Route path="/products" element={<CardList/>}/>
                 <Route path="/description" element={<Description/>}/>
-                
 
                 {/* 
                 <Route path="/carro" element={<ShoppingCart/>}/>
-              
                 <Route path="/compra" element={</>}/>
-                <Route path="/endCompra" element={</>}/>
-                <Route path="/detalleProducto" element={</>}/>
-                <Route path="/login" element={<Login/>}/>
                 <Route path="/tarjetacd" element={<TarjetaCD/>}/>
-                <Route path="*" element={<Error404/>}/>
-            <Route path="*" element={<Error404/>}/>  */}
+                <Route path="*" element={<Error404/> */}
             </Routes>
-
+            
             {/* <Footer /> */}
         </Router>
     )
