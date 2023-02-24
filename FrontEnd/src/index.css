@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --dark: #181818;
+  --dark80: #252827CC;
+  --dark35: #2629285a;
+  --dark10: #2629281a;
+  --dark65: #262928a6;
+  --orange: #E16913;
+  --liOrange: #f5934d;
+  --orange75: #ef8557bf;
+  --white: #FFFFFF;
+  --beige: #fbf3e8;
+  --grey: #D9D9D9;
+  --poppins: 'Poppins', sans-serif;
+
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* sirve para mejorara el uso de los rem  1rem = 10px */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 16px;
+}
+
+/* fin del mejorado de uso de los rem */
+
+body {
+  font-family: var(--text-font);
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.none {
+  display: none;
+}
+
+ 
+    /* ******* estilos de Buscador/Search ******* */
+.App {
+  text-align: center;
+  padding: 40px 30px;
+  max-width: 100% !important;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+table{
+  min-width: 500px;
+}
+
+
+
+
+@media (max-width: 988px){
+  
+  /* .inputBuscar{
+    width: 100% !important;
+   
+  } */
+
+  .App{
+    padding: 40px 5px;
+  }
+
+  
+.containerInput{
+  padding-bottom: 15px;
+}
+
+}
+
+/* ********FIN**********  */
