@@ -2,37 +2,37 @@ import React, { useState } from "react";
 import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
 
-const initialDb = [
-  {
-    id: 1,
-    nombre: "viatmina A",
-    descripcion: "cansancio",
-  },
-  {
-    id: 2,
-    nombre: "viatmina B",
-    descripcion: "sueño",
-  },
-  {
-    id: 3,
-    nombre: "viatmina C",
-    descripcion: "depresion",
-  },
-  {
-    id: 4,
-    nombre: "viatmina D",
-    descripcion: "envejecimiento",
-  },
-  {
-    id: 5,
-    nombre: "viatmina E",
-    descripcion: "relax",
-  },
-];
+// const initialDb = [
+//   {
+//     id: 1,
+//     nombre: "viatmina A",
+//     descripcion: "cansancio",
+//   },
+//   {
+//     id: 2,
+//     nombre: "viatmina B",
+//     descripcion: "sueño",
+//   },
+//   {
+//     id: 3,
+//     nombre: "viatmina C",
+//     descripcion: "depresion",
+//   },
+//   {
+//     id: 4,
+//     nombre: "viatmina D",
+//     descripcion: "envejecimiento",
+//   },
+//   {
+//     id: 5,
+//     nombre: "viatmina E",
+//     descripcion: "relax",
+//   },
+// ];
 
 const CrudApi = () => {
   //Estado para la db(base de datos falsa)
-  const [db, setDb] = useState(initialDb);
+  const [db, setDb] = useState([]);
   //Estado para Editar elementos de la db
   const [dataToEdit, setDataToEdit] = useState(null);
 
