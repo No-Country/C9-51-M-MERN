@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import Search from "../assets/images/lupa.png";
 import Checked from "../assets/images/checked.png"
-
+import Header from "./Header";
 
 const TarjetaCD = () => {
   return (
+    <>
+      <Header />
       <CardContainer>
         <Purchase>
          <Confirmed src={Checked}/>
@@ -24,6 +26,7 @@ const TarjetaCD = () => {
           <ButtonStart>Volver al inicio</ButtonStart>
         </ButtonWrapper>
       </CardContainer>
+      </>
   );
 }
 
@@ -53,10 +56,10 @@ const CardContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   height: auto;
-  margin: 150px 40px 60px;
+  margin: 30px 40px 60px;
   
   @media (max-width: 500px) {
-    margin: 150px 15px 0;
+    margin: 30px 15px 0;
     width: auto;
   }
 `;
