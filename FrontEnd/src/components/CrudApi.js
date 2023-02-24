@@ -44,7 +44,7 @@ const CrudApi = () => {
   const [loading, setLoading] = useState(false);
 
   let api = helpHttp();
-  let url = "http://localhost:5000/products";
+  let url = "https://e-commerce-backend-70bp.onrender.com/users/";
 
   useEffect(() => {
     setLoading(true);
@@ -73,7 +73,7 @@ const CrudApi = () => {
     api
     .post(url, options)
     .then((res) => {
-      console.log(res);
+      //console.log(res);
       if(!res.err){
         setDb({...db, res});
       }else{
