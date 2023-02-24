@@ -29,7 +29,7 @@ const Rutas = () => {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/tarjetacd" element={<TarjetaCD/>}/>
                 <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>              
-                <Route path="/carro" element={<ShoppingCart/>}/>
+                {/* <Route path="/carro" element={<ShoppingCart/>}/> */}
                 {/* <Route path="*" element={<Error404/> */}
             </Routes>            
             {/* <Footer /> */}
