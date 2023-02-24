@@ -44,6 +44,30 @@
       "descripcion": "60 cápsulas de 500 mgs",
       "precio": 1650,
       "image": "vitamin.webp"
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "nombre": "anto",
+      "descripcion": "vvvv",
+      "id": 1677254586493
+    },
+    {
+      "nombre": "gfgfgfg",
+      "descripcion": "sdsdsdsdsd",
+      "id": 1677254632773
+    },
+    {
+      "nombre": "gfgfgfg",
+      "descripcion": "ffff",
+      "id": 1677254768102
     }
   ]
 }

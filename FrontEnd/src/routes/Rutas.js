@@ -14,13 +14,8 @@ import CrudApi from "../components/CrudApi"
 // import Contacto from "../components/Contacto"
 // import ShoppingCart from "../components/shopping/ShoppingCart"
 // import Error404 from "../components/Error404"
-<<<<<<< Updated upstream
-// import Footer from "../components/Footer/Footer"
-=======
-import Footer from "../components/Footer";
-import Register from "../components/Register"
->>>>>>> Stashed changes
 
+// import Footer from "../components/Footer/Footer"
 
 const Rutas = () => {
 

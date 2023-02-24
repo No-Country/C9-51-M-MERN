@@ -1,14 +1,23 @@
-import React from 'react'
-import './Loader.css'
-
+import React from "react";
+import "./Loader.css";
 
 const Loader = () => {
   return (
-    <div className="lds-ripple">
+    <div class="lds-default">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
       <div></div>
       <div></div>
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

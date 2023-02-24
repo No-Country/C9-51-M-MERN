@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { helpHttp } from "../helpers/helpHttp";
 import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
+import Loader from "./Loader";
+import Message from "./Message";
 
 // const initialDb = [
 //   {
@@ -31,16 +34,53 @@ import CrudTable from "./CrudTable";
 // ];
 
 const CrudApi = () => {
-  //Estado para la db(base de datos falsa)
-  const [db, setDb] = useState([]);
+  //Estado para la db(base de datos)
+  const [db, setDb] = useState(null);
   //Estado para Editar elementos de la db
   const [dataToEdit, setDataToEdit] = useState(null);
+  //Estado para Mensaje de Error
+  const [error, setError] = useState(null);
+  //Estado para Loader
+  const [loading, setLoading] = useState(false);
+
+  let api = helpHttp();
+  let url = "http://localhost:5000/products";
+
+  useEffect(() => {
+    setLoading(true);
+    helpHttp().get(url).then((res) => {
+      //console.log(res);
+      if (!res.err) {
+        setDb(res);
+        setError(null);
+      } else {
+        setDb(null);
+        setError(res);
+      }
+      setLoading(false);
+    });
+  }, [url]);
 
   const createData = (data) => {
     // crea un nuevo registro en la db.
     data.id = Date.now(); //crea un id aleatorio para la nueva data que estoy ingresando
-    setDb([...db, data]); //agrega la nueva data
-  };
+    
+    let options = {
+      body:data, 
+      headers:{"content-type":"application/json"}}
+    
+    //agrega la nueva data:
+    api
+    .post(url, options)
+    .then((res) => {
+      console.log(res);
+      if(!res.err){
+        setDb({...db, res});
+      }else{
+        setError(res);
+      }
+    });
+  }; 
 
   const updateData = (data) => {
     //actualiza la db (el id de la db que quiero actualizar)
@@ -50,17 +90,17 @@ const CrudApi = () => {
 
   const deleteData = (id) => {
     //elimina registros de la db
-    let isDelete = window.confirm(  //windows.confirm es como una alerta, son elementos del windows 
+    let isDelete = window.confirm(
+      //windows.confirm es como una alerta, son elementos del windows
       `¿Estas seguro de eliminar el registro con el id ${id}?`
     );
 
-    if(isDelete){
-      let newData=db.filter(el=>el.id!==id);
+    if (isDelete) {
+      let newData = db.filter((el) => el.id !== id);
       setDb(newData);
-    }else{
+    } else {
       return;
     }
-
   };
 
   return (
@@ -72,11 +112,20 @@ const CrudApi = () => {
         dataToEdit={dataToEdit}
         setDataToEdit={setDataToEdit}
       />
-      <CrudTable
-        data={db}
-        setDataToEdit={setDataToEdit}
-        deleteData={deleteData}
-      />
+      {loading && <Loader />}
+      {error && (
+        <Message
+          msg={`Error ${error.status}:${error.statusText}`}
+          bgColor="#dc3545"
+        />
+      )}
+      {db && (
+        <CrudTable
+          data={db}
+          setDataToEdit={setDataToEdit}
+          deleteData={deleteData}
+        />
+      )}
     </>
   );
 };
