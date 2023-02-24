@@ -13,7 +13,7 @@ import Register from "../components/Register"
 // import ShoppingCart from "../components/shopping/ShoppingCart"
 // import Error404 from "../components/Error404"
 // import Footer from "../components/Footer";
-// import Footer from "../components/Footer/Footer"
+import Footer from "../components/Footer"
 
 const Rutas = () => {
 
@@ -32,7 +32,7 @@ const Rutas = () => {
                 {/* <Route path="/carro" element={<ShoppingCart/>}/> */}
                 {/* <Route path="*" element={<Error404/> */}
             </Routes>            
-            {/* <Footer /> */}
+            <Footer />
         </Router>
     )
 }
