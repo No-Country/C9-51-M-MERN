@@ -4,6 +4,8 @@ import styled from "styled-components"
 import logoNav from "../assets/images/LogoNav.webp"
 import Modal from "./Modal"
 import Login from "./Login"
+import ProductsSearch from "./ProductsSearch"
+
 
 // import BotonHamburguesa from "./BotonHamburguesa"
 // import Contador from "./Contador"
@@ -24,8 +26,8 @@ const Navigation = () => {
         </LogoContainer>
   
         <LinksContenedor open={expand}>
-          {/* <ProductsSearch />  */}
-  
+          <ProductsSearch />   
+
           <NavLink to="/products" className="navItem" onClick={() => {setExpand(!expand); }}>
             <svg width="30" height="30" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.3999 0L24.3999 5.78087V20.233L12.3999 26L0.399902 20.233V5.78087L12.3999 0ZM21.4143 6.33672L12.3999 2.00107L8.92394 3.66863L17.8807 8.03207L21.4143 6.33672ZM12.3999 10.6724L15.8326 9.0326L6.86144 4.66916L3.38548 6.33672L12.3999 10.6724ZM2.24606 7.78194V19.1213L11.4768 23.5681V12.2288L2.24606 7.78194ZM13.323 23.5681L22.5537 19.1213V7.78194L13.323 12.2288V23.5681Z" fill="black"/>
