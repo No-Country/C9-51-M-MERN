@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function CardContainer() {
   return (
@@ -38,9 +39,11 @@ export default function CardContainer() {
           <CartTotal>Total: $3000</CartTotal>
         </CartTotalDiv>
         <CartFinish>
+          <Link to="/cargatarjeta">
           <CartContinue>
             <p>Continuar Compra</p>
           </CartContinue>
+          </Link>
         </CartFinish>
       </DivContainer>
     </>
@@ -98,7 +101,7 @@ const CartContainer = styled.div`
 
 const CartImagen = styled.div`
   width: 130px;
-  heigth: auto;
+  height: auto;
   margin-top: 8px;
   margin-bottom: 8px;
   margin-left: 5px;
@@ -112,7 +115,7 @@ const CartInfo = styled.div`
   h3 {
     width: auto;
     font-size: 24px;
-    font-weigth: 400px;
+    font-weight: 400px;
     font-line: 36px;
     font-family: Poppins;
   }
@@ -120,7 +123,7 @@ const CartInfo = styled.div`
   p {
     width: auto;
     font-size: 16px;
-    font-weigth: 300px;
+    font-weight: 300px;
     font-line: 24px;
     font-family: poppins;
   }
@@ -140,7 +143,7 @@ const CartRest = styled.button`
   width: 8px;
   height: 34px;
   font-size: 20px;
-  font-weigth: 400px;
+  font-weight: 400px;
   font-line: 170%;
   background: white;
   border: none;
@@ -148,10 +151,10 @@ const CartRest = styled.button`
 
 const CartCountDiv = styled.div`
   width: 7px;
-  heigth: 34px;
+  height: 34px;
   font-family: "poppins";
   font-size: 20px;
-  font-weigth: 400px;
+  font-weight: 400px;
   font-line: 170%;
   display: flex;
   align-items: center;
@@ -161,7 +164,7 @@ const CartAdd = styled.button`
   width: 8px;
   height: 34px;
   font-size: 20px;
-  font-weigth: 400px;
+  font-weight: 400px;
   font-line: 170%;
   background: white;
   border: none;
@@ -169,7 +172,7 @@ const CartAdd = styled.button`
 
 const CartPrice = styled.div`
   width: 69px;
-  heigth: 36px;
+  height: 36px;
   color: #e16913;
   font-family: Poppins;
   font-size: 24px;
@@ -177,7 +180,7 @@ const CartPrice = styled.div`
   line-height: 36px;
   letter-spacing: 0em;
   text-align: left;
-  margin-letf: 15px;
+  margin-left: 15px;
   @media (max-width: 581px) {
   }
 `;
@@ -238,6 +241,7 @@ const CartContinue = styled.button`
   background: #e16913;
   border: none;
   margin-right: 70px;
+  margin-bottom: 30px;
   p {
     color: white;
     height: 29px;
