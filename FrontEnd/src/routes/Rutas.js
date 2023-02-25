@@ -11,7 +11,9 @@ import Login from "../components/Login"
 // import Contacto from "../components/Contacto"
 // import ShoppingCart from "../components/shopping/ShoppingCart"
 // import Error404 from "../components/Error404"
-// import Footer from "../components/Footer";
+import CardContainer from "../components/CartView/CardContainer"
+import Footer from "../components/Footer";
+import Nopassword from "../components/Nopassword"
 import Register from "../components/Register"
 
 
@@ -28,6 +30,8 @@ const Rutas = () => {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/tarjetacd" element={<TarjetaCD/>}/>
                 <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>
+                <Route path="/cart" element={<CardContainer/>}/>
+                <Route path="/nopassword" element={<Nopassword/>}/>
                 {/* 
                 <Route path="/carro" element={<ShoppingCart/>}/>              
                 <Route path="/compra" element={</>}/>
@@ -36,7 +40,8 @@ const Rutas = () => {
                 <Route path="*" element={<Error404/>}/>
             <Route path="*" element={<Error404/>}/>  */}
             </Routes>
-            {/* <Footer />  */}
+
+            <Footer /> 
         </Router>
     )
 }

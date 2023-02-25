@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Search from "../assets/images/lupa.png";
 import Checked from "../assets/images/checked.png"
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const TarjetaCD = () => {
   return (
@@ -22,9 +23,11 @@ const TarjetaCD = () => {
             Podés hacer un seguimiento del estado de tu envío en el link que te enviaremos al mail.<br />
          Número de compra: 1888996 - 554  </Description>
         </Shipment>
+        <Link to="/" style={{textDecoration: "none"}}>
         <ButtonWrapper>
           <ButtonStart>Volver al inicio</ButtonStart>
         </ButtonWrapper>
+        </Link>
       </CardContainer>
       </>
   );

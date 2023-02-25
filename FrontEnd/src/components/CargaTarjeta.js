@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 
 const CargaTarjeta = () => {
@@ -49,7 +50,9 @@ const CargaTarjeta = () => {
               <TextPayPurcharse>Ver todos los medios de pago</TextPayPurcharse>
               <FlavorPurchase>Sabor: Espirulina</FlavorPurchase>
               <QuantityPurchase>Cantidad (4 disponibles)</QuantityPurchase>
+              <Link to="/tarjetacd">
              <ButtonPurcharse>Realizar compra</ButtonPurcharse>
+              </Link>
             </CardPurchase>
         </SectionPurchase>
       </ContainerCard>

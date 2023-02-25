@@ -93,7 +93,7 @@ const fadeIn = keyframes`
 `
 
 const CardsContainer = styled.section`
-    position: absolute;
+    /* position: absolute; */
     animation: ${fadeIn} 0.8s ease-out;
     display: flex;
     flex-wrap: wrap;

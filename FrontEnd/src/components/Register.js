@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 
 
-const Register = ({onClose}) => {
+const Register = () => {
   const [eyeType, setEyeTipe] = useState(false);
   const [eyeTypeTwo, setEyeTipeTwo] = useState(false);
 
@@ -42,7 +42,7 @@ const Register = ({onClose}) => {
           />
         </InputField>
         <ButtonField>
-          <Link to="/">
+          <Link to="">
           <ButtonSession>Iniciar sesión</ButtonSession>
           </Link>
           <Link to="/registro">
@@ -94,7 +94,6 @@ const ButtonRegister = styled.button`
 const Container = styled.div`
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
-  bottom: 20%;
   display: flex;
   flex-direction: column;
   font-family: "Poppins";
