@@ -1,14 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components";
 import Visible from "../assets/images/Vector.png";
 import Hidden from "../assets/images/Vector2.png";
-import { useState } from 'react';
 import { Link } from "react-router-dom";
-
+import { helpHttp } from '../helpers/helpHttp';
 
 const Register = () => {
   const [eyeType, setEyeTipe] = useState(false);
   const [eyeTypeTwo, setEyeTipeTwo] = useState(false);
+
+   //Estado para la db(base de datos)
+   const [db, setDb] = useState(null);
+   //Estado para Editar elementos de la db
+   const [dataToEdit, setDataToEdit] = useState(null);
+   //Estado para Mensaje de Error
+   const [error, setError] = useState(null);
+   //Estado para Loader
+   const [loading, setLoading] = useState(false);
+ 
+
+  let api = helpHttp();
+  let url = "https://e-commerce-backend-70bp.onrender.com/users/";
+
+
+  const createData = (data) => {
+    let options = {
+      body:data, 
+      headers:{"content-type":"application/json"}}
+    
+    //agrega la nueva data:
+    api
+    .post(url, options)
+    .then((res) => {
+      console.log(res)
+      //console.log(res);
+      // if(!res.err){
+      //   setDb({ res});
+      // }else{
+      //   setError(res);
+      // }
+    });
+  }; 
+
 
   return (
     <Container>

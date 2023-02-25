@@ -3,25 +3,25 @@ import Navigation from "../components/Navigation"
 // import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
 import CardList from "../components/CardList"
 import Description from "../components/Description"
+import CrudApi from "../components/CrudApi"
 import CargaTarjeta from "../components/CargaTarjeta"
 import TarjetaCD from "../components/TarjetaCD"
 import Main from "../components/Main"
 import Login from "../components/Login"
-// import Nosotros from "../components/Nosotros"
+import Register from "../components/Register"
 // import Contacto from "../components/Contacto"
 // import ShoppingCart from "../components/shopping/ShoppingCart"
 // import Error404 from "../components/Error404"
 import CardContainer from "../components/CartView/CardContainer"
 import Footer from "../components/Footer";
 import Nopassword from "../components/Nopassword"
-import Register from "../components/Register"
-
 
 const Rutas = () => {
 
     return (
         <Router>
             <Navigation />
+            <CrudApi />
             <Routes>
                 <Route path="/" element={<Main />}/>
                 <Route path="/products" element={<CardList/>}/>
@@ -39,11 +39,11 @@ const Rutas = () => {
                 <Route path="/detalleProducto" element={</>}/>            
                 <Route path="*" element={<Error404/>}/>
             <Route path="*" element={<Error404/>}/>  */}
+                {/* <Route path="/carro" element={<ShoppingCart/>}/> */}
+                {/* <Route path="*" element={<Error404/> */}
             </Routes>
-
-            <Footer /> 
-        </Router>
-    )
-}
+            <Footer />
+            </Router>            
+)}
 
 export default Rutas
