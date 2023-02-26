@@ -1,15 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+
+import CardDetail from './components/CardDetail/CardDetail';
 
 function App() {
 
   return (
-    <Rutas/>
-    // <ProductsProvider>
-    //   <Rutas/>
-    // </ProductsProvider>
-
+    
+    <>
+    <CardDetail/>
+    </>
+    
   );
 }
 
 export default App;
+
+
+
+ /* <ProductsProvider>
+   <Rutas/>
+ </ProductsProvider> */
