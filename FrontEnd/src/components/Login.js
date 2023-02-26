@@ -3,68 +3,80 @@ import styled from "styled-components";
 import Visible from "../assets/images/Vector.png";
 import Hidden from "../assets/images/Vector2.png";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
+
 
 const Login = ({onClose}) => {
   const [eyeType, setEyeTipe] = useState(false);
 
   return (
-    <Container>
-      <FormField>
-        <ButtonClose onClick={onClose}>X</ButtonClose>
-        <Title>No has iniciado sesión</Title>
-        <InputField>
-          <Label>Mail de usuario</Label>
-          <InputEmail placeholder="ejemplo@naturalboost.com" />
-        </InputField>
-        <InputField>
-          <Label>Contraseña</Label>
-          <InputPassword
-            placeholder="Debe tener al menos 8 caracteres"
-            type={eyeType ? "text" : "password"}
-          />
-          <IconEye
-            src={eyeType ? Visible : Hidden}
-            onClick={() => setEyeTipe(!eyeType)}
-          />
-        </InputField>
-        <ButtonField>
-          <ButtonSession>Iniciar sesión</ButtonSession>
-          <ButtonRegister>Registrarme</ButtonRegister>
-        </ButtonField>
-        <TextPassword>¿Olvidaste tu contraseña?</TextPassword>
-      </FormField>
-    </Container>
+    <>
+      <Container>
+        <FormField>
+          {/* <ButtonClose onClick={onClose}>X</ButtonClose> */}
+          <Title>No has iniciado sesión</Title>
+          <InputField>
+            <Label>Mail de usuario</Label>
+            <InputEmail placeholder="ejemplo@naturalboost.com" />
+          </InputField>
+          <InputField>
+            <Label>Contraseña</Label>
+            <InputPassword
+              placeholder="Debe tener al menos 8 caracteres"
+              type={eyeType ? "text" : "password"}
+            />
+            <IconEye
+              src={eyeType ? Visible : Hidden}
+              onClick={() => setEyeTipe(!eyeType)}
+            />
+          </InputField>
+          <ButtonField>
+            <Link to="">
+              <ButtonSession>Iniciar sesión</ButtonSession>
+            </Link>
+            <Link to="/register">
+              <ButtonRegister>Registrarme</ButtonRegister>
+            </Link>
+          </ButtonField>
+          <Link style={{ textDecoration: "none" }} to="/nopassword">
+            <TextPassword className="textItem">
+              ¿Olvidaste tu contraseña?
+            </TextPassword>
+          </Link>
+        </FormField>
+      </Container>
+    </>
   );    
 }
 
 export default Login;
 
-const ButtonClose = styled.button`
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: "Poppins";
-  font-size: 20px;
-  float: right;
-  margin-left: -30px;
-  margin-right: -25px ;
-  margin-top: -30px;
-  position: relative;
-  width: 30px;
-  z-index: 2;
+// const ButtonClose = styled.button`
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-family: "Poppins";
+//   font-size: 20px;
+//   float: right;
+//   margin-left: -30px;
+//   margin-right: -25px ;
+//   margin-top: -30px;
+//   position: relative;
+//   width: 30px;
+//   z-index: 2;
 
-  &:hover {
-  background: #747474;  
-  color: #fff;
-  }
+//   &:hover {
+//   background: #747474;  
+//   color: #fff;
+//   }
 
-  @media (max-width: 500px) {
-    margin-left: -10px;
-    margin-right: -10px ;
-    margin-top: -20px;
-    width: 20px;
-  }
-`;
+//   @media (max-width: 500px) {
+//     margin-left: -10px;
+//     margin-right: -10px ;
+//     margin-top: -20px;
+//     width: 20px;
+//   }
+// `;
 
 const ButtonField = styled.div`
   align-items: center;
@@ -83,7 +95,7 @@ const ButtonSession = styled.button`
   font-family: 'Poppins';
   font-size: 20px;
   height: 46px;
-  width: 80%;
+  width: 220px;
 `;
 
 const ButtonRegister = styled.button`
@@ -94,23 +106,18 @@ const ButtonRegister = styled.button`
   font-size: 20px;
   font-family: 'Poppins';
   height: 46px;
-  width: 80%;
+  width: 220px;
 `;
 
 const Container = styled.div`
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
-  bottom: 20%;
   display: flex;
   flex-direction: column;
   font-family: "Poppins";
   height: 100vh;
   justify-content: center;
-  left: 0;
-  top: 0;
-  position: fixed;
   width: 100vw;
-  height: 100vh;
 `;
 
 const FormField = styled.div`
@@ -118,7 +125,8 @@ const FormField = styled.div`
   border: 1px solid burlywood;
   border-radius: 10px;
   height: 440px;
-  margin-top: 20px;
+  /* margin-top: -40px; */
+  margin-bottom: 80px;
   padding: 40px;
   width: 420px;
 
@@ -187,12 +195,23 @@ const Label = styled.label`
   width: 100%;
 `;
 
-const TextPassword = styled.p`
+const TextPassword = styled.h6`
  color: #747474;
+ cursor: pointer;
  font-size: 14px;
  font-weight: bold;
  margin-top: 25px;
  text-align: center;
+ text-decoration: none;
+ border: none;
+ 
+ 
+ .textItem {
+          text-decoration: none;
+          background: green;
+      
+ }
+
 `
 
 const Title = styled.p`

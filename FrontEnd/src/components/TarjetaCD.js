@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Search from "../assets/images/lupa.png";
 import Checked from "../assets/images/checked.png"
-
+import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const TarjetaCD = () => {
   return (
+    <>
+      <Header />
       <CardContainer>
         <Purchase>
          <Confirmed src={Checked}/>
@@ -20,10 +23,13 @@ const TarjetaCD = () => {
             Podés hacer un seguimiento del estado de tu envío en el link que te enviaremos al mail.<br />
          Número de compra: 1888996 - 554  </Description>
         </Shipment>
+        <Link to="/" style={{textDecoration: "none"}}>
         <ButtonWrapper>
           <ButtonStart>Volver al inicio</ButtonStart>
         </ButtonWrapper>
+        </Link>
       </CardContainer>
+      </>
   );
 }
 
@@ -53,10 +59,10 @@ const CardContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   height: auto;
-  margin: 150px 40px 60px;
+  margin: 30px 40px 60px;
   
   @media (max-width: 500px) {
-    margin: 150px 15px 0;
+    margin: 30px 15px 0;
     width: auto;
   }
 `;

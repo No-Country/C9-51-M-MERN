@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 
 
+
 //Bueno aca estaria mostrando el carrito por sino tiene nada comprado y si tiene. falta pasar propiedades, los datos.
 
 
@@ -71,7 +72,11 @@ function CartView() {
           </CartTotalDiv>
           <CartFinish>
             <CartContinue>
+
+            {/* <Link to="/cargatarjeta"> */}
               <p>Continuar Compra</p>
+            {/* </Link> */}
+
             </CartContinue>
           </CartFinish>
         </DivContainer>
@@ -195,7 +200,7 @@ const CartContainer = styled.div`
 
 const CartImagen = styled.div`
   width: 130px;
-  heigth: auto;
+  height: auto;
   margin-top: 8px;
   margin-bottom: 8px;
   margin-left: 5px;
@@ -209,7 +214,7 @@ const CartInfo = styled.div`
   h3 {
     width: auto;
     font-size: 24px;
-    font-weigth: 400px;
+    font-weight: 400px;
     font-line: 36px;
     font-family: Poppins;
   }
@@ -323,6 +328,9 @@ const CartTotal = styled.div`
 const CartFinish = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 20px;
+  background: red;
+
 `;
 
 const CartContinue = styled.button`

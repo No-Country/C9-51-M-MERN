@@ -1,13 +1,19 @@
-//import logo from './logo.svg';
 
-import CardDetail from './components/CardDetail/CardDetail';
+
+
+
+
+import Rutas from "./routes/Rutas";
+
 
 function App() {
 
   return (
     
     <>
-    <CardDetail/>
+    <ProductsProvider>
+   <Rutas/>
+ </ProductsProvider>
     </>
     
   );
@@ -17,6 +23,3 @@ export default App;
 
 
 
- /* <ProductsProvider>
-   <Rutas/>
- </ProductsProvider> */
