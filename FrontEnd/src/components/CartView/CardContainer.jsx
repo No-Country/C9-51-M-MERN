@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+
 import { Link } from "react-router-dom";
+
 
 export default function CardContainer() {
   return (
@@ -39,11 +41,13 @@ export default function CardContainer() {
           <CartTotal>Total: $3000</CartTotal>
         </CartTotalDiv>
         <CartFinish>
+
           <Link to="/cargatarjeta">
           <CartContinue>
             <p>Continuar Compra</p>
           </CartContinue>
           </Link>
+
         </CartFinish>
       </DivContainer>
     </>
@@ -115,7 +119,9 @@ const CartInfo = styled.div`
   h3 {
     width: auto;
     font-size: 24px;
+
     font-weight: 400px;
+
     font-line: 36px;
     font-family: Poppins;
   }
@@ -123,7 +129,9 @@ const CartInfo = styled.div`
   p {
     width: auto;
     font-size: 16px;
+
     font-weight: 300px;
+
     font-line: 24px;
     font-family: poppins;
   }
@@ -143,7 +151,9 @@ const CartRest = styled.button`
   width: 8px;
   height: 34px;
   font-size: 20px;
+
   font-weight: 400px;
+
   font-line: 170%;
   background: white;
   border: none;
@@ -151,10 +161,12 @@ const CartRest = styled.button`
 
 const CartCountDiv = styled.div`
   width: 7px;
+
   height: 34px;
-  font-family: "poppins";
+  font-family: poppins;
   font-size: 20px;
   font-weight: 400px;
+
   font-line: 170%;
   display: flex;
   align-items: center;

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../../../components/context/CartContext";
 import { useContext } from "react";
+//import { Link } from "react-router-dom";
 
 
 
@@ -71,9 +72,11 @@ function CartView() {
           </CartTotalDiv>
           <CartFinish>
             <CartContinue>
+
             {/* <Link to="/cargatarjeta"> */}
               <p>Continuar Compra</p>
             {/* </Link> */}
+
             </CartContinue>
           </CartFinish>
         </DivContainer>
@@ -327,6 +330,7 @@ const CartFinish = styled.div`
   justify-content: flex-end;
   margin-bottom: 20px;
   background: red;
+
 `;
 
 const CartContinue = styled.button`

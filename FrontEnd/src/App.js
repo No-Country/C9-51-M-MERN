@@ -1,14 +1,25 @@
+
+
+
+
+
 import Rutas from "./routes/Rutas";
+
 
 function App() {
 
   return (
-    <Rutas/>
-    // <ProductsProvider>
-    //   <Rutas/>
-    // </ProductsProvider>
-
+    
+    <>
+    <ProductsProvider>
+   <Rutas/>
+ </ProductsProvider>
+    </>
+    
   );
 }
 
 export default App;
+
+
+
