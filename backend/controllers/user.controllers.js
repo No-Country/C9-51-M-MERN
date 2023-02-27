@@ -8,29 +8,7 @@ const  User  = require('../models/user.model')
 const  Product  = require('../models/product.model');
 const Cart  = require('../models/cart.model');
 
-/*const getAllUsers = async (req, res, next) => {
-	try {
-	  const users = await User.find()
-		.populate({
-		  path: 'products',
-		  model: 'Product',
-		  populate: {
-			path: 'cart',
-			model: 'Cart'
-		  }
-		})
-		.exec();
-  
-	  res.status(200).json({
-		status: 'success',
-		data: {
-		  users
-		}
-	  });
-	} catch (error) {
-	  next(error);
-	}
-  };*/
+
 const getAllUsers = (async (req, res, next) => {
     const users =  await User.find({
 		include: [
@@ -72,6 +50,7 @@ const createUser = (async (req, res, next) => {
 		newUser,
 	});
 });
+
 
 const getUserById = async (req, res, next) => {
 	const userId = req.params.id;
@@ -130,33 +109,8 @@ const deleteUser = async (req, res, next) => {
 	} catch (error) {
 	  next(error);
 	}
-  };
+};
 
-/*const deleteUser = (async (req, res, next) => {
-	try {
-		const { id } = req.params;
-		const { status } = req.body;
-	
-		const updatedObj = await YourModel.findByIdAndUpdate(id, { status }, { new: true });
-	
-		if (!updatedObj) {
-		  return res.status(404).json({
-			status: 'fail',
-			message: 'Objeto no encontrado'
-		  });
-		}
-	
-		res.status(200).json({
-		  status: 'success',
-		  data: {
-			updatedObj
-		  }
-		});
-	  } catch (error) {
-		next(error);
-	  }
-	};
-});*/
 
 const login = async (req, res, next) => {
 	try {
@@ -207,40 +161,7 @@ const login = async (req, res, next) => {
 	  next(error);
 	}
   };
-/*
-const login = (async (req, res, next) => {
-	const { email, password } = req.body;
 
-	// Validate credentials (email)
-	const user = await User.findOne({
-		email,
-		status: 'active',
-	});
-
-	if (!user) {
-		return next(('Credentials invalid', 400));
-	}
-
-	// Validate password
-	const isPasswordValid = await bcrypt.compare(password, user.password);
-
-	if (!isPasswordValid) {
-		return next(('Credentials invalid', 400));
-	}
-
-	// Generate JWT (JsonWebToken) ->
-	const token = await jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-		expiresIn: '30d',
-	});
-
-	// Send response
-	res.status(200).json({
-		status: 'success',
-		token,
-		user,
-	});
-});
-*/
 module.exports = {
 	getAllUsers,
 	createUser,

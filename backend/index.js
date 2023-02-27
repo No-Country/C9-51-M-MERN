@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGODB_URI)
 const usersRoutes = require('./routes/users.route')
 const productRoutes = require('./routes/products.route')
 const categoryRouter = require('./routes/category.route')
+const cartRouter = require('./routes/cart.Rourte')
 //Config express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +27,7 @@ app.use(cors())
 app.use('/users',usersRoutes)
 app.use('/products',productRoutes)
 app.use('/category',categoryRouter)
+app.use('/cart',cartRouter)
 
 
 app.listen(8000,()=>{
