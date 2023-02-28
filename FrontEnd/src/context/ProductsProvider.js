@@ -5,7 +5,7 @@ import {
   shoppingReducer,
 } from "../reducer/shoppingReducer";
 import axios from "axios";
-//import Global from "../Global";
+
 
 export const ProductsContext = createContext();
 
