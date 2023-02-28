@@ -13,7 +13,7 @@ const Login = ({onClose}) => {
     <>
       <Container>
         <FormField>
-          <ButtonClose onClick={onClose}>X</ButtonClose>
+          {/* <ButtonClose onClick={onClose}>X</ButtonClose> */}
           <Title>No has iniciado sesión</Title>
           <InputField>
             <Label>Mail de usuario</Label>
@@ -31,7 +31,7 @@ const Login = ({onClose}) => {
             />
           </InputField>
           <ButtonField>
-            <Link to="/">
+            <Link to="">
               <ButtonSession>Iniciar sesión</ButtonSession>
             </Link>
             <Link to="/register">
@@ -51,32 +51,32 @@ const Login = ({onClose}) => {
 
 export default Login;
 
-const ButtonClose = styled.button`
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: "Poppins";
-  font-size: 20px;
-  float: right;
-  margin-left: -30px;
-  margin-right: -25px ;
-  margin-top: -30px;
-  position: relative;
-  width: 30px;
-  z-index: 2;
+// const ButtonClose = styled.button`
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-family: "Poppins";
+//   font-size: 20px;
+//   float: right;
+//   margin-left: -30px;
+//   margin-right: -25px ;
+//   margin-top: -30px;
+//   position: relative;
+//   width: 30px;
+//   z-index: 2;
 
-  &:hover {
-  background: #747474;  
-  color: #fff;
-  }
+//   &:hover {
+//   background: #747474;  
+//   color: #fff;
+//   }
 
-  @media (max-width: 500px) {
-    margin-left: -10px;
-    margin-right: -10px ;
-    margin-top: -20px;
-    width: 20px;
-  }
-`;
+//   @media (max-width: 500px) {
+//     margin-left: -10px;
+//     margin-right: -10px ;
+//     margin-top: -20px;
+//     width: 20px;
+//   }
+// `;
 
 const ButtonField = styled.div`
   align-items: center;
@@ -107,27 +107,17 @@ const ButtonRegister = styled.button`
   font-family: 'Poppins';
   height: 46px;
   width: 220px;
-
-.modCart {
-  display: none;
-}
-
 `;
 
 const Container = styled.div`
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
-  bottom: 20%;
   display: flex;
   flex-direction: column;
   font-family: "Poppins";
   height: 100vh;
   justify-content: center;
-  left: 0;
-  top: 0;
-  position: fixed;
   width: 100vw;
-  height: 100vh;
 `;
 
 const FormField = styled.div`
@@ -135,7 +125,8 @@ const FormField = styled.div`
   border: 1px solid burlywood;
   border-radius: 10px;
   height: 440px;
-  margin-top: 20px;
+  /* margin-top: -40px; */
+  margin-bottom: 80px;
   padding: 40px;
   width: 420px;
 

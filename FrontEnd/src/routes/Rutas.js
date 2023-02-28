@@ -10,7 +10,8 @@ import Register from "../components/Register"
 import Footer from "../components/Footer"
 // import ShoppingCart from "../components/shopping/ShoppingCart"
 // import Error404 from "../components/Error404"
-
+import CardContainer from "../components/CartView/CardContainer"
+import Nopassword from "../components/Nopassword"
 
 const Rutas = () => {
 
@@ -23,14 +24,21 @@ const Rutas = () => {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/tarjetacd" element={<TarjetaCD/>}/>
-                <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>              
-               {/*<Route path="/description" element={<Description/>}/>*/}
+                <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>
+                <Route path="/cart" element={<CardContainer/>}/>
+                <Route path="/nopassword" element={<Nopassword/>}/>
+                {/* 
+                <Route path="/carro" element={<ShoppingCart/>}/>              
+                <Route path="/compra" element={</>}/>
+                <Route path="/endCompra" element={</>}/>
+                <Route path="/detalleProducto" element={</>}/>            
+                <Route path="*" element={<Error404/>}/>
+            <Route path="*" element={<Error404/>}/>  */}
                 {/* <Route path="/carro" element={<ShoppingCart/>}/> */}
                 {/* <Route path="*" element={<Error404/> */}
-            </Routes>            
+            </Routes>
             <Footer />
-        </Router>
-    )
-}
+            </Router>            
+)}
 
 export default Rutas

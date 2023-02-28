@@ -1,3 +1,8 @@
+
+
+
+
+
 import ProductsProvider from "./context/ProductsProvider";
 import Rutas from "./routes/Rutas";
 
@@ -14,3 +19,6 @@ function App() {
 }
 
 export default App;
+
+
+
