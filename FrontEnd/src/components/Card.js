@@ -11,11 +11,6 @@ import { Link } from "react-router-dom"
 const Card = ({ product }) => {
 
     // const { addToCart} = useContext(ProductsContext)
-    // const { id, nombre, tipo, precio, image, info,  bgColor, colorPrecio, bgColorBoton } = product;
-
-    const images = require.context("../assets/images", true);
-    
-    const handelModalContainerClick = (e) => e.stopPropagation();
 
     const [isOpen, setIsOpen] = useState(false)
     const openModal = () => setIsOpen(true)
@@ -26,17 +21,17 @@ const Card = ({ product }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-    const {id, nombre, descripcion, precio, image} = product
+    const {_id, name , description, image, price} = product
 
     return (
         <>
             <CardContainer onClick={openModal}>
-                <img src={images(`./${image}`)} alt={nombre} style={{ width: '100%' }} />
+                <img src={image} alt={name} style={{ width: '100%' }} />
                 <Nombres>
-                    <Nombre>{nombre}</Nombre>
-                    <Tipo>{descripcion}</Tipo>
+                    <Nombre>{name}</Nombre>
+                    <Tipo>{description}</Tipo>
                 </Nombres>
-                <PrecioS>$ <p>{precio}</p></PrecioS>
+                <PrecioS>$ <p>{price}</p></PrecioS>
                 {/* <ButtAddProduct onClick={()=>{addToCart(id); handleShow(); closeModal()}} bgColorBoton={bgColorBoton}> */}
                 <ContainerButt>
                     <Link to="/description" className='link' > Comprar</Link>
@@ -44,18 +39,18 @@ const Card = ({ product }) => {
                 </ContainerButt>  
             </CardContainer>
 
-            <Modal key={id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
+            <Modal key={_id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
                 style={{height: '370px', zIndex: 9999}}>
                     <ModHeader  closeButton>
                     ¡El producto fue añadido con éxito!
                     </ModHeader>
                     <Modal.Body>
                         <ModBody>
-                            <ModImg src={images(`./${image}`)} alt={nombre} />
+                            <ModImg src={image} alt={name} />
                             <ModText>
-                                <Nombre><ModText>{nombre}</ModText></Nombre>
-                                <Tipo><ModText>{descripcion}</ModText></Tipo>
-                                <ModPrecio>$<p>{`${precio} x 1`}</p></ModPrecio>
+                                <Nombre><ModText>{name}</ModText></Nombre>
+                                <Tipo><ModText>{description}</ModText></Tipo>
+                                <ModPrecio>$<p>{price} x 1</p></ModPrecio>
                             </ModText>
                         </ModBody>
                     </Modal.Body>

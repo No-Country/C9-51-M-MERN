@@ -1,69 +1,24 @@
 import styled, { keyframes } from "styled-components";
 import Card from "./Card";
 import { useContext } from "react";
-import { ProductsContext } from "../context/ProductsProvider"
-import Description from "./Description";
+import { ProductsContext } from "../context/ProductsProvider";
+
 
 
 const CardList = () => {
+  const { products } = useContext(ProductsContext);
+  console.log(products);
 
-    // const { products } = useContext(ProductsContext);
-
-    let products = [
-        {
-          id:1,
-          nombre: "Alga Spirulina",
-          descripcion: "60 cápsulas de 500 mgs",
-          precio: 1650,         
-          image: "vitamin.webp"
-        },
-        {
-          id:2,
-          nombre: "Alga Spirulina",
-          descripcion: "60 cápsulas de 500 mgs",
-          precio: 1650,         
-          image: "vitamin.webp"
-        },
-        {
-          id:3,
-          nombre: "Alga Spirulina",
-          descripcion: "60 cápsulas de 500 mgs",
-          precio: 1650,          
-          image: "vitamin.webp"
-        },
-        {
-          id:4,
-          nombre: "Alga Spirulina",
-          descripcion: "60 cápsulas de 500 mgs",
-          precio: 1650,        
-          image: "vitamin.webp"
-        },
-        {
-          id:5,
-          nombre: "Alga Spirulina",
-          descripcion: "60 cápsulas de 500 mgs",
-          precio: 1650,
-          image: "vitamin.webp"
-        },
-        {
-          id:6,
-          nombre: "Alga Spirulina",
-          descripcion: "60 cápsulas de 500 mgs",
-          precio: 1650,
-          image: "vitamin.webp"
-        }
-    ]
-
-    return (
-        <CardsContainer>
-            {products.map((product) => (
-                <Card key={product.id} product={product}  />))}
-        </CardsContainer>
-    );
+  return (
+    <CardsContainer>
+      {products.map((product) => (
+        <Card key={product._id} product={product} />
+      ))}
+    </CardsContainer>
+  );
 };
 
 export default CardList;
-
 
 const fadeIn = keyframes`
 0% {
@@ -72,13 +27,13 @@ const fadeIn = keyframes`
 100% {
     opacity:1
 }
-`
+`;
 
 const CardsContainer = styled.section`
-    /* position: absolute; */
-    animation: ${fadeIn} 0.8s ease-out;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
+  /* position: absolute; */
+  animation: ${fadeIn} 0.8s ease-out;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 `;
