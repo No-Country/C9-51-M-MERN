@@ -1,165 +1,187 @@
-// import { useEffect, createContext, useReducer } from "react"
-// import { TYPES } from "../actions/shoppingActions";
-// import { shoppingInitialState, shoppingReducer } from "../reducer/shoppingReducer";
-// import axios from "axios";
+import { useEffect, createContext, useReducer } from "react";
+import { TYPES } from "../actions/ShoppActions";
+import {
+  shoppingInitialState,
+  shoppingReducer,
+} from "../reducer/shoppingReducer";
+import axios from "axios";
+//import Global from "../Global";
 
+export const ProductsContext = createContext();
 
+const ProductsProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
 
-// export const ProductsContext = createContext();
+  const getData = async () => {
+    const ENDPOINT = {
+      products: "https://e-commerce-backend-70bp.onrender.com/products",
+    };
+    const { data } = await axios.get(ENDPOINT.products);
+    return {
+      resProducts: data.products,
+    };
+  };
 
+  const updateStateProd = async () => {
+    const { resProducts } = await getData();
+    console.log(resProducts);
+    return dispatch({
+      type: TYPES.READ_STATE_PRODUCTS,
+      payload: resProducts,
+    });
+  };
 
-// const ProductsProvider = ({ children }) => {
+  const updateStateCart = async () => {
+    const { resCart } = await getData();
+    return dispatch({
+      type: TYPES.READ_STATE_CART,
+      payload: resCart,
+    });
+  };
 
-//   const [state, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
+  // const getData = async () => {
+  //   const ENDPOINT = {
+  //     products: "http://localhost:5000/products",
+  //     cart: "http://localhost:5000/cart",
+  //   };
+  //   return {
+  //     resProducts: await axios.get(ENDPOINT.products),
+  //     resCart: await axios.get(ENDPOINT.cart),
+  //   };
+  // };
 
-//   const getData = async () => {
-//     const ENDPOINT = {
-//       products: "http://localhost:5000/products",
-//       cart: "http://localhost:5000/cart",
-//     };
-//     return {
-//       resProducts: await axios.get(ENDPOINT.products),
-//       resCart: await axios.get(ENDPOINT.cart),
-//     };
-//   };
+  // const updateState = async () => {
+  //   const { resProducts, resCart } = await getData();
 
-//   const updateState = async () => {
-//     const { resProducts, resCart } = await getData();
+  //   dispatch({ type: TYPES.READ_STATE, payload: [resProducts.data, resCart.data] });
+  // };
 
-//     dispatch({ type: TYPES.READ_STATE, payload: [resProducts.data, resCart.data] });
-//   };
+  // const addToCart = async (id) => {
+  //   const delay = 100;
+  //   const urlp = Global.urlproducts.products;
+  //   const urlc = Global.urlcart.cart;
 
+  //   const resProducts = await axios.get(urlp),
+  //     resCart = await axios.get(urlc);
+  //   const productsList = resProducts.data,
+  //     cartItems = resCart.data;
+  //   const newItem = productsList.find((product) => product.id === id),
+  //     itemInCart = cartItems.find((item) => item.id === id);
 
-//   const addToCart = async (id) => {
-//     const delay = 100;
-//     const endpoints = {
-//       products: "http://localhost:5000/products",
-//       cart: "http://localhost:5000/cart",
-//     };
-//     const resProducts = await axios.get(endpoints.products),
-//       resCart = await axios.get(endpoints.cart);
+  //   let endpoint;
+  //   const options = {
+  //     headers: "content-type: application/json",
+  //   };
 
-//     const productsList = resProducts.data,
-//       cartItems = resCart.data;
+  //   if (!itemInCart) {
+  //     options.method = "POST";
+  //     endpoint = urlcart;
+  //     newItem.quantity = 1;
+  //     options.data = JSON.stringify(newItem);
+  //   } else {
+  //     options.method = "PUT";
+  //     endpoint = `http://localhost:5000/cart/${itemInCart.id}`;
+  //     itemInCart.quantity = itemInCart.quantity += 1;
+  //     options.data = JSON.stringify(itemInCart);
+  //   }
+  //   await axios(endpoint, options);
 
-//     const newItem = productsList.find((product) => product.id === id),
-//       itemInCart = cartItems.find((item) => item.id === id);
+  //   dispatch({ type: TYPES.ADD_TO_CART, payload: id });
 
-//     let endpoint
-//     const options = {
-//       headers: "content-type: application/json",
-//     };
+  //   setTimeout(async () => {
+  //     await updateState();
+  //   }, delay);
+  // };
 
-//     if (!itemInCart) {
-//       options.method = "POST"
-//       endpoint = `http://localhost:5000/cart`
-//       newItem.quantity = 1
-//       options.data = JSON.stringify(newItem)
-//     } else {
-//       options.method = "PUT"
-//       endpoint = `http://localhost:5000/cart/${itemInCart.id}`
-//       itemInCart.quantity = itemInCart.quantity += 1
-//       options.data = JSON.stringify(itemInCart)
-//     }
-//     await axios(endpoint, options)
+  //   const delFromCart = async (id, all) => {
+  //     let delay = 100;
+  //     const resCart = await axios.get("http://localhost:5000/cart")
+  //     const cartItems = resCart.data
 
-//     dispatch({ type: TYPES.ADD_TO_CART, payload: id });
+  //     const itemToDelete = cartItems.find((item) => item.id === id)
 
-//     setTimeout(async () => {
-//       await updateState()
-//     }, delay)
-//   };
+  //     if (itemToDelete) {
 
-//   const delFromCart = async (id, all) => {
+  //       let endpoint = `http://localhost:5000/cart/${itemToDelete.id}`
 
-//     let delay = 100;
-//     const resCart = await axios.get("http://localhost:5000/cart")
-//     const cartItems = resCart.data
+  //       if (!all) {
 
-//     const itemToDelete = cartItems.find((item) => item.id === id)
+  //         const options = {
+  //           headers: "content-type: application/json",
+  //         };
 
-//     if (itemToDelete) {
+  //         if (itemToDelete.quantity > 1) {
+  //           options.method = "PUT";
+  //           itemToDelete.quantity = itemToDelete.quantity - 1;
+  //           options.data = JSON.stringify(itemToDelete)
+  //         } else {
+  //           options.method = "DELETE"
+  //         }
+  //         await axios(endpoint, options)
+  //       } else {
+  //         const options = {
+  //           method: "DELETE",
+  //           headers: "content-type: application/json"
+  //         }
+  //         await axios(endpoint, options)
+  //       }
+  //     }
 
-//       let endpoint = `http://localhost:5000/cart/${itemToDelete.id}`
+  //     setTimeout(async () => {
+  //       await updateState()
+  //     }, delay)
 
-//       if (!all) {
+  //   };
 
-//         const options = {
-//           headers: "content-type: application/json",
-//         };
+  //   const clearCart = async () => {
 
-//         if (itemToDelete.quantity > 1) {
-//           options.method = "PUT";
-//           itemToDelete.quantity = itemToDelete.quantity - 1;
-//           options.data = JSON.stringify(itemToDelete)
-//         } else {
-//           options.method = "DELETE"
-//         }
-//         await axios(endpoint, options)
-//       } else {
-//         const options = {
-//           method: "DELETE",
-//           headers: "content-type: application/json"
-//         }
-//         await axios(endpoint, options)
-//       }
-//     }
+  //     let delay = 100;
+  //     const resCart = await axios.get("http://localhost:5000/cart")
+  //     const cartItems = resCart.data
 
-//     setTimeout(async () => {
-//       await updateState()
-//     }, delay)
+  //     cartItems.forEach(async item => {
 
-//   };
+  //       let endpoint = `http://localhost:5000/cart/${item.id}`
 
-//   const clearCart = async () => {
+  //       const options = {
+  //         method: "DELETE",
+  //         headers: "content-type: application/json",
+  //       }
 
-//     let delay = 100;
-//     const resCart = await axios.get("http://localhost:5000/cart")
-//     const cartItems = resCart.data
+  //       await axios(endpoint, options)
+  //     });
 
-//     cartItems.forEach(async item => {
+  //     setTimeout(async () => {
+  //       await updateState()
+  //     }, delay)
+  //   }
 
-//       let endpoint = `http://localhost:5000/cart/${item.id}`
+  //   const handleModalOpen = () => { dispatch({ type: TYPES.OPEN_CARD_MODAL }) };
 
-//       const options = {
-//         method: "DELETE",
-//         headers: "content-type: application/json",
-//       }
+  useEffect(() => {
+    updateStateProd();
+    updateStateCart();
+  }, []);
 
-//       await axios(endpoint, options)
-//     });
+  const products = state.products,
+    cart = state.cart;
 
-//     setTimeout(async () => {
-//       await updateState()
-//     }, delay)
-//   }
+  const data = {
+    state,
+    dispatch,
+    updateStateProd,
+    updateStateCart,
+    //addToCart,
+    //delFromCart,
+    // clearCart,
+    products,
+    cart,
+    //handleModalOpen,
+  };
 
-//   useEffect(() => {
-//     updateState();
-//   }, []);
+  return (
+    <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
+  );
+};
 
-//   const handleModalOpen = () => { dispatch({ type: TYPES.OPEN_CARD_MODAL }) };
-
-//   const products = state.products,
-//     cart = state.cart
-
-//   const data = {
-//     state,
-//     dispatch,
-//     updateState,
-//     addToCart,
-//     delFromCart,
-//     clearCart,
-//     products,
-//     cart,
-//     handleModalOpen
-//   }
-
-//   return (
-//     <ProductsContext.Provider value={data}>
-//       {children}
-//     </ProductsContext.Provider>
-//   )
-// }
-
-// export default ProductsProvider
+export default ProductsProvider;

@@ -1,55 +1,48 @@
-// import { TYPES } from "../actions/shoppingActions";
+import { TYPES } from "../actions/ShoppActions";
 
 
-// export const shoppingInitialState = {
-//     products: [],
-//     cart: [],
-//     openCardModal: false,
-// };
+export const shoppingInitialState = {
+    products: [],
+    cart: [],
+};
 
 
-// export const shoppingReducer = (state, action) => {
-//     switch (action.type) {
-//         case TYPES.READ_STATE: {
-//             return {
-//                 ...state,
-//                 products: action.payload[0],
-//                 cart: action.payload[1]
-//             };
-//         }
+export const shoppingReducer = (state, action) => {
+    switch (action.type) {
+        case TYPES.READ_STATE_PRODUCTS: {
+            return {
+                ...state,
+                products: action.payload,
+                
+            };
+        }
+    
+        case TYPES.READ_STATE_CART: {
+            return {
+                ...state,
+                cart: action.payload
+            };
+        }
 
-//         case TYPES.ADD_TO_CART: {
-
-//             const newItem = state.products.find(
-//                 (product) => product.id === action.payload);
-
-//             const itemInCart = state.cart.find((item) => item.id === newItem.id);
+        case TYPES.ADD_TO_CART: {
+            const newItem = state.products.find(
+                (product) => product.id === action.payload);
+            const itemInCart = state.cart.find((item) => item.id === newItem.id);
             
-//             return (!itemInCart) 
-//                 ?{
-//                     ...state,
-//                     cart: [...state.cart, {newItem}] 
-//                 }
-//                 :{
-//                     ...state,
-//                     cart: [...state.cart]
-//                 }
-//             }
+            return (!itemInCart) 
+                ?{
+                    ...state,
+                    cart: [...state.cart, {newItem}] 
+                }
+                :{
+                    ...state,
+                    cart: [...state.cart]
+                }
+            }
 
-//         case TYPES.OPEN_CARD_MODAL: {
-//             return state.openCardModal === false
-//                 ? { openCardModal: state.openCardModal = true }
-//                 : { ...state };
-//         }
-//         case TYPES.CLOSE_CARD_MODAL: {
-//             return state.openCardModal === true
-//                 ? { openCardModal: state.openCardModal = false }
-//                 : { ...state };
-//         }
-
-//         default:
-//             return state;
-//     }
-// };
+        default:
+            return state;
+    }
+};
 
 
