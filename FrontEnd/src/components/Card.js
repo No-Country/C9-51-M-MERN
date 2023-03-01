@@ -4,6 +4,8 @@ import { useState, useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
+import CartView from './CartView/CartView';
+import CardDetail from './CardDetail/CardDetail';
 
 
 
@@ -26,16 +28,18 @@ const Card = ({ product }) => {
     return (
         <>
             <CardContainer onClick={openModal}>
-                <img src={image} alt={name} style={{ width: '100%' }} />
-                <Nombres>
-                    <Nombre>{name}</Nombre>
-                    <Tipo>{description}</Tipo>
-                </Nombres>
-                <PrecioS>$ <p>{price}</p></PrecioS>
+                <div onClick={()=><CardDetail/> }>
+                    <img src={image} alt={name} style={{ width: '100%' }} />
+                    <Nombres>
+                        <Nombre>{name}</Nombre>
+                        <Tipo>{description}</Tipo>
+                    </Nombres>
+                    <PrecioS>$ <p>{price}</p></PrecioS>
+                </div>
                 
                 <ContainerButt>
-                    <Link to="/description" className='link' > Comprar</Link>
-                    <AddProduct onClick={()=>{addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
+                    <Link to="/" className='link' > Comprar</Link>
+                    <AddProduct onClick={()=>{<CartView/>; addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
             </CardContainer>
 

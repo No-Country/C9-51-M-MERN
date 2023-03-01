@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {cart} from "../../assets/icons/cart"// import { CartContext } from "../../../components/context/CartContext";
+import imgcart from "../../assets/icons/cart.webp"
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsProvider";
 import CardContainer from "./CardContainer";
@@ -17,7 +17,7 @@ const CartView = () =>{
           ? (
             <DivContainerVacio>
               <CartImg>
-                <img src={cart} alt="" />
+                <img src={imgcart} alt="" />
               </CartImg>
               <CartTitleView>
                 <h4>Ups, este carrito esta vacío.</h4>
