@@ -180,6 +180,7 @@ const DetailDiv = styled.div`
   height: 440px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
+
   /* Movil */
   @media only screen and (max-width: 600px) {
     grid-area: 2 / 1 / 3 / 2;
@@ -309,7 +310,7 @@ const DetailBuy = styled.button`
   height: 36px;
   border-radius: 5px;
   border: none;
-  margin-rigth: 12px;
+  /* margin-right: 12px; */
   margin-left: 19px;
   background: #d9d9d9;
   font-size: 16px;
@@ -329,6 +330,7 @@ const DetailAdd = styled.button`
   height: 36px;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
   margin: 12px;
   background: #e16913;
   font-size: 16px;
@@ -344,9 +346,11 @@ const DetailAdd = styled.button`
 const DetailTextContainer = styled.div`
   grid-area: 3 / 1 / 4 / 3;
   margin-top: 80px;
+  margin-bottom: 20px;
+  font-family: 'Poppins';
 
   h2 {
-    font-family: Poppins;
+    font-family: 'Poppins';
     font-size: 24px;
     font-weight: 300px;
   }
