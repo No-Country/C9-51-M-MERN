@@ -1,46 +1,33 @@
+import React from 'react';
 import styled from "styled-components";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 
-
-const CargaTarjeta = () => {
+const Form = () => {
   return (
-    <>
-      <Header />
       <ContainerCard>
         <SectionForm>
           <FormField>
-            <Title>Datos de la tarjeta</Title>
-            <Label>Numero de la tarjeta</Label>
-            <InputField placeholder="Ingresa el número de la tarjeta" />
-            <Label>Titular de la tarjeta</Label>
-            <InputField placeholder="Nombre completo como figura en la tarjeta" />
-            <CardSecurity>
-              <LabelSecurity>Vencimiento</LabelSecurity>
-              <LabelSecurity>Cod. de seguridad</LabelSecurity>
-              <InputSecurity placeholder="MM/AA" />
-              <InputSecurity placeholder="3 dígitos" />
-            </CardSecurity>
+            <Title>Datos de envío</Title>
+            <Label>Nombre completo</Label>
+            <InputField/>
             <Label>Numero de documento</Label>
-            <InputField placeholder="Como figura en el documento a presentar" />
-            <Label>Sexo (como figura en el DNI)</Label>
+            <InputField/>
+            <Label>Provincia</Label>
+            <InputField/>
+            <Label>Localidad</Label>
+            <InputField/>
+            <Label>Código postal</Label>
+            <InputField/>
+            <Label>Calle</Label>
+            <InputField/>
+            <CardSecurity>
+              <LabelSecurity>Numero de vivienda</LabelSecurity>
+              <LabelSecurity>Piso/Departamento</LabelSecurity>
+              <InputSecurity  />
+              <InputSecurity  />
+            </CardSecurity>
           </FormField>
-          <Gender>
-            <InputCheck type="radio" name="genero" id="hombre" value="Hombre" />
-            <LabelCheck for="hombre">Hombre</LabelCheck>
-            <InputCheck type="radio" name="genero" id="mujer" value="Mujer" />
-            <LabelCheck for="mujer">Mujer</LabelCheck>
-          </Gender>
         </SectionForm>
-
-        <SectionCard>
-            <Card />
-          <TextCard>
-            <strong>Atención: </strong> 
-            al pulsar en “Realizar compra”, se comenzará a procesar el
-            pago y se aplicarán cargos en la tarjeta ingresada.
-          </TextCard>
-        </SectionCard>
 
         <SectionPurchase>
             <CardPurchase>
@@ -50,50 +37,23 @@ const CargaTarjeta = () => {
               <TextPayPurcharse>Ver todos los medios de pago</TextPayPurcharse>
               <FlavorPurchase>Sabor: Espirulina</FlavorPurchase>
               <QuantityPurchase>Cantidad (4 disponibles)</QuantityPurchase>
-              <Link to="/tarjetacd">
+              <Link to="/cargatarjeta">
              <ButtonPurcharse>Realizar compra</ButtonPurcharse>
               </Link>
             </CardPurchase>
         </SectionPurchase>
       </ContainerCard>
-    </>
-  );
+  )
 }
 
-export default CargaTarjeta;
+export default Form;
 
- const ContainerCard = styled.div`
+const ContainerCard = styled.div`
    display: flex;
    justify-content: center;
    font-size: "Poppins";
    min-height: 100vh;
    width: 100%;
- `;
-
- const SectionCard = styled.section`
-   display: flex;
-   flex-direction: column;
-   height: auto;
-   width: 25%;
- `;
-
- const Card = styled.img`
-   background: #181818;
-   border: none;
-   border-radius: 10px;
-   height: 180px;
-   display: flex;
-   flex-direction: column;
-   margin-top: 80px;
-   width: 90%;
- `;
-
- const TextCard = styled.p`
-   font-family: "Poppins";
-   font-size: 14px;
-   text-align: right;
-   margin-top: 80px;
-   width: 90%;
  `;
 
  const CardSecurity = styled.section`
@@ -102,11 +62,7 @@ export default CargaTarjeta;
 
  const LabelSecurity = styled.label`
    font-size: 16px;
-   /* margin-bottom: 10px; */
-   margin-right: 80px;
-
-   /* background: red; */
-   /* width: 45%; */
+   margin-right: 24px;
  `;
 
  const InputSecurity = styled.input`
@@ -118,7 +74,7 @@ export default CargaTarjeta;
    font-style: italic;
    padding: 6px;
    margin-right: 10px;
-   margin-top: 5px;
+   margin-top: 10px;
  `;
 
  const SectionForm = styled.section`
@@ -148,28 +104,13 @@ export default CargaTarjeta;
    font-size: 14px;
    font-style: italic;
    padding: 6px;
-   width: 75%;
+   width: 65%;
  `;
 
  const Label = styled.label`
    font-size: 16px;
    margin-left: 1px;
    width: 100%;
- `;
-
- const LabelCheck = styled.label`
-   font-size: 16px;
-   margin-left: 2px;
- `;
-
- const InputCheck = styled.input`
-   border-radius: 50px;
-   cursor: pointer;
-   margin-left: 20px;
- `;
-
- const Gender = styled.section`
-   margin-top: -15px;
  `;
 
  const SectionPurchase = styled.section`

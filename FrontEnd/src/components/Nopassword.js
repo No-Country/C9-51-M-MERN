@@ -36,12 +36,12 @@ const ButtonField = styled.div`
   margin-top: 60px;
 `;
 
-
 const ButtonPassword = styled.button`
   background: #E16913;
   border: none;
   border-radius: 5px;
   color: #FFFFFF;
+  cursor: pointer;
   font-size: 20px;
   font-family: 'Poppins';
   height: 46px;

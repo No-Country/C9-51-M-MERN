@@ -10,10 +10,8 @@ const Login = ({onClose}) => {
   const [eyeType, setEyeTipe] = useState(false);
 
   return (
-    <>
       <Container>
         <FormField>
-          {/* <ButtonClose onClick={onClose}>X</ButtonClose> */}
           <Title>No has iniciado sesión</Title>
           <InputField>
             <Label>Mail de usuario</Label>
@@ -31,10 +29,10 @@ const Login = ({onClose}) => {
             />
           </InputField>
           <ButtonField>
-            <Link to="">
+            <Link to="/alta">
               <ButtonSession>Iniciar sesión</ButtonSession>
             </Link>
-            <Link to="/register">
+            <Link to="/registro">
               <ButtonRegister>Registrarme</ButtonRegister>
             </Link>
           </ButtonField>
@@ -45,38 +43,11 @@ const Login = ({onClose}) => {
           </Link>
         </FormField>
       </Container>
-    </>
   );    
 }
 
 export default Login;
 
-// const ButtonClose = styled.button`
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   font-family: "Poppins";
-//   font-size: 20px;
-//   float: right;
-//   margin-left: -30px;
-//   margin-right: -25px ;
-//   margin-top: -30px;
-//   position: relative;
-//   width: 30px;
-//   z-index: 2;
-
-//   &:hover {
-//   background: #747474;  
-//   color: #fff;
-//   }
-
-//   @media (max-width: 500px) {
-//     margin-left: -10px;
-//     margin-right: -10px ;
-//     margin-top: -20px;
-//     width: 20px;
-//   }
-// `;
 
 const ButtonField = styled.div`
   align-items: center;
@@ -92,6 +63,7 @@ const ButtonSession = styled.button`
   border: none;
   border-radius: 5px;
   color: #FFFFFF;
+  cursor: pointer;
   font-family: 'Poppins';
   font-size: 20px;
   height: 46px;
@@ -103,6 +75,7 @@ const ButtonRegister = styled.button`
   border: none;
   border-radius: 5px;
   color: #FFFFFF;
+  cursor: pointer;
   font-size: 20px;
   font-family: 'Poppins';
   height: 46px;

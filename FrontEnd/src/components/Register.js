@@ -46,7 +46,6 @@ const Register = () => {
   return (
     <Container>
       <FormField>
-        {/* <ButtonClose onClick={onClose} >X</ButtonClose> */}
         <Title>Registro</Title>
         <InputField>
           <Label>Mail de usuario</Label>
@@ -75,11 +74,11 @@ const Register = () => {
           />
         </InputField>
         <ButtonField>
-          <Link to="">
-          <ButtonSession>Iniciar sesión</ButtonSession>
-          </Link>
-          <Link to="/registro">
+          <Link to="/alta">
           <ButtonRegister>Registrarme</ButtonRegister>
+          </Link>
+          <Link to="/login">
+          <ButtonSession>Volver atrás</ButtonSession>
           </Link>
         </ButtonField>
         <Link to="/nopassword" style={{ textDecoration: "none" }}>
@@ -107,6 +106,7 @@ const ButtonSession = styled.button`
   border: none;
   border-radius: 5px;
   color: #FFFFFF;
+  cursor: pointer;
   font-family: 'Poppins';
   font-size: 20px;
   height: 46px;
@@ -118,6 +118,7 @@ const ButtonRegister = styled.button`
   border: none;
   border-radius: 5px;
   color: #FFFFFF;
+  cursor: pointer;
   font-size: 20px;
   font-family: 'Poppins';
   height: 46px;

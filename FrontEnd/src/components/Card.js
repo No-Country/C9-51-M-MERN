@@ -292,6 +292,7 @@ const AddProduct= styled.button`
     background: var(--orange);
     border-radius: 5px;
     color:white;
+    cursor: pointer;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;

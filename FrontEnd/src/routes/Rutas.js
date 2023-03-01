@@ -22,7 +22,7 @@ const Rutas = () => {
             <Routes>
                 <Route path="/" element={<Main />}/>
                 <Route path="/products" element={<CardList/>}/>
-                <Route path="/register" element={<Register/>}/>
+                <Route path="/registro" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/tarjetacd" element={<TarjetaCD/>}/>
                 <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>
@@ -32,7 +32,7 @@ const Rutas = () => {
                 {/* <Route path="*" element={<Error404/>}/>*/}
             </Routes>
             <Footer />
-            </Router>            
+         </Router>            
 )}
 
 export default Rutas

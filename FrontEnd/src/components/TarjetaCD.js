@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Search from "../assets/images/lupa.png";
 import Checked from "../assets/images/checked.png"
-import Header from "./Header";
+// import Header from "./Header";
 import { Link } from "react-router-dom";
 
 const TarjetaCD = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <CardContainer>
         <Purchase>
          <Confirmed src={Checked}/>
@@ -40,6 +40,7 @@ const ButtonStart = styled.button`
   border: none;
   border-radius: 10px;
   color: #fff;
+  cursor: pointer;
   font-family: "Poppins";
   font-size: 24px;
   font-style: normal;
