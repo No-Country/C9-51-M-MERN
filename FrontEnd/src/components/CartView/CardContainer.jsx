@@ -248,6 +248,7 @@ const CartContinue = styled.button`
   width: 241px;
   left: 0px;
   top: 44px;
+  cursor: pointer;
   border-radius: 10px;
   padding: 10px 20px 10px 20px;
   background: #e16913;
