@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 import logoNav from "../assets/images/LogoNav.webp"
 import ProductsSearch from "./ProductsSearch"
-// import BotonHamburguesa from "./BotonHamburguesa"
-// import Contador from "./Contador"
+import Contador from "./Contador"
+import BotonHamburguesa from "./BotonHamburguesa"
 
 
 
@@ -44,11 +44,11 @@ const Navigation = () => {
           <NavLink to="/login"><i className="fa-solid fa-user" ></i></NavLink>
           <div>
           <NavLink to="/cart"><i className="fa-solid fa-cart-shopping carrito" ></i></NavLink>
-            {/* <Contador></Contador> */}
+            <Contador></Contador>
           </div>
           
           <div onClick={()=> setExpand (!expand)}>
-            {/* <BotonHamburguesa /> */}
+            <BotonHamburguesa />
           </div>
         </IconosContenedor>
       </NavContainer>
@@ -85,7 +85,7 @@ const Navigation = () => {
       img{
         object-fit: scale-down;
         position: relative;
-        left: 30%;    
+        left: 20%;    
         top: 5%;
       }
     `;
@@ -117,7 +117,7 @@ const Navigation = () => {
             background-color: var(--dark);
             padding-right: 5px;
             position: relative;
-            bottom: 3px;
+            top: 7px;
             
           }
           

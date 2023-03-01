@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 
 const Card = ({ product }) => {
 
-    // const { addToCart} = useContext(ProductsContext)
+    const { addToCart} = useContext(ProductsContext)
 
     const [isOpen, setIsOpen] = useState(false)
     const openModal = () => setIsOpen(true)
@@ -32,10 +32,10 @@ const Card = ({ product }) => {
                     <Tipo>{description}</Tipo>
                 </Nombres>
                 <PrecioS>$ <p>{price}</p></PrecioS>
-                {/* <ButtAddProduct onClick={()=>{addToCart(id); handleShow(); closeModal()}} bgColorBoton={bgColorBoton}> */}
+                
                 <ContainerButt>
                     <Link to="/description" className='link' > Comprar</Link>
-                    <AddProduct onClick={()=> handleShow()}> Agregar al Carrito</AddProduct>
+                    <AddProduct onClick={()=>{addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
             </CardContainer>
 
@@ -400,8 +400,7 @@ const ButtonShop = styled.button`
   &:active {
     background-color: var(--orange) !important;
     box-shadow: none;
-    transform: translateY(4px);
-    display: flex;}
+    transform: translateY(2px)}
   }
 `
 

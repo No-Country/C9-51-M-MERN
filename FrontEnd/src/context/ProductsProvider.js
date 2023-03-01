@@ -6,13 +6,13 @@ import {
 } from "../reducer/shoppingReducer";
 import axios from "axios";
 
-
 export const ProductsContext = createContext();
 
 const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
 
-  const getData = async () => {
+/* Solicitud y cambio de Estado de Productos */
+  const getDataProd = async () => {
     const ENDPOINT = {
       products: "https://e-commerce-backend-70bp.onrender.com/products",
     };
@@ -21,142 +21,111 @@ const ProductsProvider = ({ children }) => {
       resProducts: data.products,
     };
   };
-
+  
   const updateStateProd = async () => {
-    const { resProducts } = await getData();
-    console.log(resProducts);
+    const { resProducts } = await getDataProd();
+    //console.log(resProducts);
     return dispatch({
       type: TYPES.READ_STATE_PRODUCTS,
       payload: resProducts,
     });
   };
-
+  
+/* Solicitud y cambio de Estado de Productos del Carrito */
+  const getDataCart = async () => {
+    const ENDPOINT = {
+      cart: "https://e-commerce-backend-70bp.onrender.com/cart",
+    };
+    const { data } = await axios.get(ENDPOINT.cart);
+    return {
+      resCart: data.cart,
+    };
+  };
   const updateStateCart = async () => {
-    const { resCart } = await getData();
+    const { resCart } = await getDataCart();
     return dispatch({
       type: TYPES.READ_STATE_CART,
       payload: resCart,
     });
   };
 
-  // const getData = async () => {
-  //   const ENDPOINT = {
-  //     products: "http://localhost:5000/products",
-  //     cart: "http://localhost:5000/cart",
-  //   };
-  //   return {
-  //     resProducts: await axios.get(ENDPOINT.products),
-  //     resCart: await axios.get(ENDPOINT.cart),
-  //   };
-  // };
+/* Agregar Productos al Carrito */
+  const addToCart = async (_id) => {
+    const delay = 100;
+    const ENDPOINT = {
+      products: "https://e-commerce-backend-70bp.onrender.com/products",
+      cart: "https://e-commerce-backend-70bp.onrender.com/cart"
+    };
+    const resProducts = await axios.get(ENDPOINT.products)
+    const resCart = await axios.get(ENDPOINT.cart);
+    
+    const productsList = resProducts.data.products,
+      cartItems = resCart.data.cart; 
 
-  // const updateState = async () => {
-  //   const { resProducts, resCart } = await getData();
+    const newItem = productsList.find((product) => product._id === _id),
+      itemInCart = cartItems.find((item) => item._id === _id);
 
-  //   dispatch({ type: TYPES.READ_STATE, payload: [resProducts.data, resCart.data] });
-  // };
+    if (!itemInCart) {
+      await axios.post("https://e-commerce-backend-70bp.onrender.com/cart")
+      newItem.quantity = 1;
+    } else {
+      await axios.put(`https://e-commerce-backend-70bp.onrender.com/cart/${itemInCart._id}`)
+      itemInCart.quantity = itemInCart.quantity += 1;
+    }
 
-  // const addToCart = async (id) => {
-  //   const delay = 100;
-  //   const urlp = Global.urlproducts.products;
-  //   const urlc = Global.urlcart.cart;
+    dispatch({ type: TYPES.ADD_TO_CART, payload: _id });
 
-  //   const resProducts = await axios.get(urlp),
-  //     resCart = await axios.get(urlc);
-  //   const productsList = resProducts.data,
-  //     cartItems = resCart.data;
-  //   const newItem = productsList.find((product) => product.id === id),
-  //     itemInCart = cartItems.find((item) => item.id === id);
+    setTimeout(async () => {
+      await updateStateProd();
+      await updateStateCart();
+    }, delay);
+  };
 
-  //   let endpoint;
-  //   const options = {
-  //     headers: "content-type: application/json",
-  //   };
+/* Eliminar uno/todos los productos del carrito */
+    const delFromCart = async (_id, all) => {
+      let delay = 100;
+      const resCart = await axios.get("https://e-commerce-backend-70bp.onrender.com/cart")
+      const cartItems = resCart.data.cart
 
-  //   if (!itemInCart) {
-  //     options.method = "POST";
-  //     endpoint = urlcart;
-  //     newItem.quantity = 1;
-  //     options.data = JSON.stringify(newItem);
-  //   } else {
-  //     options.method = "PUT";
-  //     endpoint = `http://localhost:5000/cart/${itemInCart.id}`;
-  //     itemInCart.quantity = itemInCart.quantity += 1;
-  //     options.data = JSON.stringify(itemInCart);
-  //   }
-  //   await axios(endpoint, options);
+      const itemToDelete = cartItems.find((item) => item._id === _id)
 
-  //   dispatch({ type: TYPES.ADD_TO_CART, payload: id });
+      if (itemToDelete) {
+        let endpoint = `https://e-commerce-backend-70bp.onrender.com/cart/${itemToDelete._id}`
+        if (!all) {
+          if(itemToDelete.quantity > 1) {
+            await axios.put(endpoint)
+            itemToDelete.quantity = itemToDelete.quantity - 1;
+          }else{
+            await axios.delete(endpoint)
+          }
+        } else {
+          await axios.delete(endpoint)
+        }
+      }
 
-  //   setTimeout(async () => {
-  //     await updateState();
-  //   }, delay);
-  // };
+      setTimeout(async () => {
+        await updateStateProd();
+        await updateStateCart();
+      }, delay)
+    };
 
-  //   const delFromCart = async (id, all) => {
-  //     let delay = 100;
-  //     const resCart = await axios.get("http://localhost:5000/cart")
-  //     const cartItems = resCart.data
+/* Limpiar Carrito */
+    const clearCart = async () => {
+      let delay = 100;
+      const resCart = await axios.get("https://e-commerce-backend-70bp.onrender.com/cart")
+      const cartItems = resCart.data.cart
 
-  //     const itemToDelete = cartItems.find((item) => item.id === id)
+      cartItems.forEach(async item => {
+        let endpoint = `https://e-commerce-backend-70bp.onrender.com/cart/${item._id}`;
+      
+        await axios.delete(endpoint)
+      });
 
-  //     if (itemToDelete) {
-
-  //       let endpoint = `http://localhost:5000/cart/${itemToDelete.id}`
-
-  //       if (!all) {
-
-  //         const options = {
-  //           headers: "content-type: application/json",
-  //         };
-
-  //         if (itemToDelete.quantity > 1) {
-  //           options.method = "PUT";
-  //           itemToDelete.quantity = itemToDelete.quantity - 1;
-  //           options.data = JSON.stringify(itemToDelete)
-  //         } else {
-  //           options.method = "DELETE"
-  //         }
-  //         await axios(endpoint, options)
-  //       } else {
-  //         const options = {
-  //           method: "DELETE",
-  //           headers: "content-type: application/json"
-  //         }
-  //         await axios(endpoint, options)
-  //       }
-  //     }
-
-  //     setTimeout(async () => {
-  //       await updateState()
-  //     }, delay)
-
-  //   };
-
-  //   const clearCart = async () => {
-
-  //     let delay = 100;
-  //     const resCart = await axios.get("http://localhost:5000/cart")
-  //     const cartItems = resCart.data
-
-  //     cartItems.forEach(async item => {
-
-  //       let endpoint = `http://localhost:5000/cart/${item.id}`
-
-  //       const options = {
-  //         method: "DELETE",
-  //         headers: "content-type: application/json",
-  //       }
-
-  //       await axios(endpoint, options)
-  //     });
-
-  //     setTimeout(async () => {
-  //       await updateState()
-  //     }, delay)
-  //   }
-
-  //   const handleModalOpen = () => { dispatch({ type: TYPES.OPEN_CARD_MODAL }) };
+      setTimeout(async () => {
+        await updateStateProd();
+        await updateStateCart();
+      }, delay)
+    };
 
   useEffect(() => {
     updateStateProd();
@@ -171,12 +140,11 @@ const ProductsProvider = ({ children }) => {
     dispatch,
     updateStateProd,
     updateStateCart,
-    //addToCart,
-    //delFromCart,
-    // clearCart,
+    addToCart,
+    delFromCart,
+    clearCart,
     products,
     cart,
-    //handleModalOpen,
   };
 
   return (
