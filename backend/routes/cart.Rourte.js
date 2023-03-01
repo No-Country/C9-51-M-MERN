@@ -1,14 +1,14 @@
 const express = require('express');
 
 const {
-    addToCard, removeFromCart
+    addToCart, removeFromCart
 } = require('../controllers/cart.Controller');
 
 
 const cartRouter = express.Router();
 
 
-cartRouter.get('/', addToCard);
+cartRouter.get('/', addToCart);
 cartRouter.delete('/:id',removeFromCart)
 
 

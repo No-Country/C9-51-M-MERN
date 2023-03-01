@@ -1,26 +1,42 @@
-const Category = require('../models/cart.model');
+const Cart = require('../models/cart.model');
+const Product = require('../models/product.model')
 
-const addToCard = async(req, res, next)=> {
+const addToCart = async (req, res, next) => {
+  try {
     const { productId, quantity } = req.body;
-  
-    try {
-      // Verificar si el producto ya está en el carrito
-      const existingItem = await Cart.findOne({ productId });
-  
-      if (existingItem) {
-        // Si el producto ya está en el carrito, actualizar la cantidad
-        existingItem.quantity += quantity;
-        await existingItem.save();
-        return res.status(200).json({ message: 'Producto agregado al carrito' });
-      } else {
-        // Si el producto no está en el carrito, crear un nuevo registro
-        const cartItem = new Cart({ productId, quantity });
-        await cartItem.save();
-        return res.status(200).json({ message: 'Producto agregado al carrito' });
-      }
-    } catch (error) {
-      return next(error);
+    /*const { userId } = req.session;
+    /*
+    // Verificar si el usuario tiene una sesión activa
+    if (!userId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }*/
+
+    // Verificar si el producto existe en la base de datos
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
     }
+
+    // Verificar si el producto ya está en el carrito del usuario
+    let cart = await Cart.findOne({  status: 'active', productId });
+    if (cart) {
+      cart.quantity += quantity;
+    } else {
+      cart = new Cart({
+        
+        productId,
+        quantity,
+      });
+    }
+
+    await cart.save();
+
+    res.status(200).json({  
+        data : {cart},
+         message: 'Product added to cart successfully' });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const removeFromCart= async(req, res, next)=> {
@@ -47,4 +63,4 @@ const removeFromCart= async(req, res, next)=> {
 
 
 
-module.exports = { addToCard, removeFromCart };
+module.exports = { addToCart, removeFromCart };
