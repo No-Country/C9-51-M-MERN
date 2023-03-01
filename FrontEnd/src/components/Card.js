@@ -38,7 +38,7 @@ const Card = ({ product }) => {
                 </div>
                 
                 <ContainerButt>
-                    <Link to="/" className='link' > Comprar</Link>
+                    <Link to="/form" className='link' > Comprar</Link>
                     <AddProduct onClick={()=>{<CartView/>; addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
             </CardContainer>
