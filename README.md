@@ -9,7 +9,6 @@ Autores ✒️
 
 Maximiliano Navarro Cestau - UXUI//
 Jorge Herrera - BackEnd//
-Miguel Viloria - BackEnd//
 Alexander Windecker - FrontEnd//
 Victor Olivera  - FrontEnd//
 Antonela Bonaglia  - FrontEnd//
