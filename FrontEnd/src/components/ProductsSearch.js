@@ -120,27 +120,17 @@ const ContainerInput = styled.form`
   position: relative;
   top: -20px;
 
-  input:focus {
-    height: 30px;
-    box-shadow: var(--dark) 0px 0px 0px 0px;
-    margin: 5px;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #e6e1e1 ;
-   
-  }
-
   input {
     font-size: 12px;
     font-family: poppins;
-    width: 333px;
-    height: 44px;
-    padding-top: 10px;
+    width: 300px;
+    height: 43px;
+    padding: 10px 0px 10px 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: none;
+    border-color: transparent;
   }
 `;
 

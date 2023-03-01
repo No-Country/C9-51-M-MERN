@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import {useContext} from "react"
-import {ProductsContext} from "../../context/ProductsProvider"
+import {ProductsContext} from "../context/ProductsProvider"
 
-const Counter = () => {
+const Contador = () => {
 
   const {state} = useContext(ProductsContext);
 
@@ -13,21 +13,22 @@ const Counter = () => {
   })
 
   return (
-    <CounterI className='badge'>{count !== 0 ? count : null}</CounterI>
+    <CounterI >{count !== 0 ? count : null}</CounterI>
   )
 }
 
-export default Counter
+export default Contador
 
 const CounterI = styled.div`
   position: relative;
-  top: -20px;
-  width: 2rem;
-  height: 2rem;
+  top: -43px;
+  z-index: 99999;
+  right: 200px;
+  width: 1.4rem;
+  height: 1.4rem;
   border-radius: 50%;
-  background-color: black;
+  background-color:var(--orange);
   padding: .5rem;
   font-size: 1rem;
-  right: 10px;
   /* visibility: hidden; */
 `;

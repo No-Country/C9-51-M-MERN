@@ -90,13 +90,9 @@ a {
   }
 }
 
-
 table{
   min-width: 500px;
 }
-
-
-
 
 @media (max-width: 988px){
   
@@ -117,3 +113,10 @@ table{
 }
 
 /* ********FIN**********  */
+
+/* **** Estilos Cart ****** */
+.modCart {
+  height: 100%;
+  text-decoration: none;
+  text-align: center;
+}

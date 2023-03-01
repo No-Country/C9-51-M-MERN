@@ -1,22 +1,23 @@
 import styled from 'styled-components'
 
 
-const HamburgerButton = () => {
+const BotonHamburguesa = () => {
   return (
 
-    <Hamburger>
+
+    <Hamburguesa>
     <div className="icon nav-icon-7">
         <span></span>
         <span></span>
         <span></span>
     </div>
-    </Hamburger>
+    </Hamburguesa>
   )
 }
 
-export default HamburgerButton
+export default BotonHamburguesa
 
-const Hamburger = styled.div`
+const Hamburguesa = styled.div`
   .nav-icon-7{
     width: 30px;
     height: 25px;
@@ -24,6 +25,7 @@ const Hamburger = styled.div`
     position: relative;
     cursor: pointer;
     display: inline-block;
+    
   };
   .nav-icon-7 span{
     background-color:#FFF;

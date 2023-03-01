@@ -4,13 +4,15 @@ import { useState, useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
+import CartView from './CartView/CartView';
+import CardDetail from './CardDetail/CardDetail';
 
 
 
 
 const Card = ({ product }) => {
 
-    // const { addToCart} = useContext(ProductsContext)
+    const { addToCart} = useContext(ProductsContext)
 
     const [isOpen, setIsOpen] = useState(false)
     const openModal = () => setIsOpen(true)
@@ -26,16 +28,18 @@ const Card = ({ product }) => {
     return (
         <>
             <CardContainer onClick={openModal}>
-                <img src={image} alt={name} style={{ width: '100%' }} />
-                <Nombres>
-                    <Nombre>{name}</Nombre>
-                    <Tipo>{description}</Tipo>
-                </Nombres>
-                <PrecioS>$ <p>{price}</p></PrecioS>
-                {/* <ButtAddProduct onClick={()=>{addToCart(id); handleShow(); closeModal()}} bgColorBoton={bgColorBoton}> */}
+                <div onClick={()=><CardDetail/> }>
+                    <img src={image} alt={name} style={{ width: '100%' }} />
+                    <Nombres>
+                        <Nombre>{name}</Nombre>
+                        <Tipo>{description}</Tipo>
+                    </Nombres>
+                    <PrecioS>$ <p>{price}</p></PrecioS>
+                </div>
+                
                 <ContainerButt>
-                    <Link to="/description" className='link' > Comprar</Link>
-                    <AddProduct onClick={()=> handleShow()}> Agregar al Carrito</AddProduct>
+                    <Link to="/form" className='link' > Comprar</Link>
+                    <AddProduct onClick={()=>{<CartView/>; addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
             </CardContainer>
 
@@ -401,8 +405,7 @@ const ButtonShop = styled.button`
   &:active {
     background-color: var(--orange) !important;
     box-shadow: none;
-    transform: translateY(4px);
-    display: flex;}
+    transform: translateY(2px)}
   }
 `
 

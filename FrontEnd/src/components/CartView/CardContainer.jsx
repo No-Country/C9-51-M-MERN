@@ -1,65 +1,78 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-
 import { Link } from "react-router-dom";
+import { ProductsContext } from "../../context/ProductsProvider";
+import {IoIosAdd} from 'react-icons/io';
+import {IoMdRemove} from 'react-icons/io';
 
 
-export default function CardContainer() {
+
+const CardContainer = ({ item }) => {
+  const { clearCart, delFromCart, addToCart, state } = useContext(ProductsContext);
+  const { _id, name, description, image, price, quantity } = item;
+
+  let count = 0;
+
+  state.cart.forEach((item) => {
+    count += item.quantity;
+  });
+
   return (
     <>
-      <CartTitle>CARRITO DE COMPRAS</CartTitle>
-      <CartItems>3 PRODUCTOS</CartItems>
+      <Container>
+        <ContainerTitle>
+          <CartTitle>CARRITO DE COMPRAS</CartTitle>
+          <CartItems>{count} PRODUCTOS</CartItems>
+        </ContainerTitle>
+        <Link to="">
+          <ButtonLimpiarCarro onClick={() => clearCart()}>
+            Limpiar Carrito
+          </ButtonLimpiarCarro>
+        </Link>
+      </Container>
+
       <DivContainer>
         <CartDivcontainer>
           <CartDiv>
             <CartContainer>
-              <CartImagen src="" alt="">
-                imagen
+              <CartImagen>
+                <img src={image} alt={name} />
               </CartImagen>
               <CartInfo>
-                <h3>Alga Spirulina</h3>
-                <p>60 capsulas de 500 mg</p>
+                <h3>{name}</h3>
+                <p>{description}</p>
               </CartInfo>
 
               <CartPriceDiv>
                 <CartCount>
-                  <CartRest>-</CartRest>
-                  <CartCountDiv>0</CartCountDiv>
-                  <CartAdd>+</CartAdd>
+                  <CartRest><IoMdRemove style={{ paddingTop:"13px", fontWeight: "bold" , color:"#ef8557"}} onClick={()=>delFromCart(_id)} /></CartRest>
+                  <CartCountDiv>{`${quantity}`}</CartCountDiv>
+                  <CartAdd><IoIosAdd style={{ position:"relative", color:"#ef8557"}} onClick={()=>addToCart(_id)}/></CartAdd>
                 </CartCount>
-                <CartPrice>$1860</CartPrice>
+
+                <CartPrice>${`${price*quantity}`}</CartPrice>
               </CartPriceDiv>
 
-              <CartDelete>
-                <img src="../../img/Eliminar.jpg" alt="" />
-              </CartDelete>
+             <div>
+              <Link to="/cart" className="modCart">
+                  <CartDelete onClick={(all)=>delFromCart(_id, all)}>
+                    <img src="../../img/Eliminar.jpg" alt="" />
+                  </CartDelete>
+                </Link>
+             </div>
+
             </CartContainer>
           </CartDiv>
         </CartDivcontainer>
-
-        <CartTotalDiv>
-          <CartTotal>Total: $3000</CartTotal>
-        </CartTotalDiv>
-        <CartFinish>
-
-          <Link to="/cargatarjeta">
-          <CartContinue>
-            <p>Continuar Compra</p>
-          </CartContinue>
-          </Link>
-
-        </CartFinish>
       </DivContainer>
     </>
   );
-}
+};
+export default CardContainer;
 
-const DivContainer = styled.div``;
+const Container = styled.div``;
 
-const CartDivcontainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
+const ContainerTitle = styled.div``;
 
 const CartTitle = styled.h4`
   font-family: Poppins;
@@ -81,6 +94,15 @@ const CartItems = styled.p`
   letter-spacing: 0em;
   text-align: left;
   text-align: center;
+`;
+
+const ButtonLimpiarCarro = styled.button``;
+
+const DivContainer = styled.div``;
+
+const CartDivcontainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const CartDiv = styled.div`
@@ -219,51 +241,5 @@ const CartPriceDiv = styled.div`
 
   @media (min-width: 581px) {
     flex-direction: row;
-  }
-`;
-
-const CartTotalDiv = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const CartTotal = styled.div`
-  width: 141px;
-  height: 36px;
-  font-family: Poppins;
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 36px;
-  margin-top: 35px;
-  margin-right: 70px;
-`;
-
-const CartFinish = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const CartContinue = styled.button`
-  height: 49px;
-  width: 241px;
-  left: 0px;
-  top: 44px;
-  cursor: pointer;
-  border-radius: 10px;
-  padding: 10px 20px 10px 20px;
-  background: #e16913;
-  border: none;
-  margin-right: 70px;
-  margin-bottom: 30px;
-  p {
-    color: white;
-    height: 29px;
-    width: 201px;
-    left: 20px;
-    margin: auto;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 29px;
   }
 `;
