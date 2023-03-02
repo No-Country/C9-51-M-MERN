@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import Card from "./Card";
 import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
+import Backg from "../assets/images/bg.png"
 
 
 
@@ -31,6 +32,9 @@ const fadeIn = keyframes`
 
 const CardsContainer = styled.section`
   /* position: absolute; */
+  background-image: url(${Backg});
+   background-repeat: no-repeat;
+   background-size: cover;
   animation: ${fadeIn} 0.8s ease-out;
   display: flex;
   flex-wrap: wrap;
