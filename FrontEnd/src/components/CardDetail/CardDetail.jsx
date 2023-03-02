@@ -1,18 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import Backg from "../../assets/images/costado.png";
+import Vitamin from "../../assets/images/vitamin.webp";
+import { Link } from "react-router-dom";
+
 
 function CardDetail() {
   return (
-    <>
+    <Box>
       <ImgContainer>
         <ImgOne>
-          <img src="https://picsum.photos/id/237/200/300" alt="" />
+          <img src={Vitamin} alt="" />
         </ImgOne>
         <ImgTwo>
-          <img src="https://picsum.photos/id/238/200/300" alt="" />
+          <img src={Vitamin} alt="" />
         </ImgTwo>
         <ImgThree>
-          <img src="https://picsum.photos/id/239/200/300" alt="" />
+          <img src={Vitamin} alt="" />
         </ImgThree>
         <DetailDiv>
           <DetailTitle>Alga Spirulina - 60 capsulas x 500mg</DetailTitle>
@@ -24,8 +28,12 @@ function CardDetail() {
             Cantidad: <span>(4 disponibles)</span>{" "}
           </DetailTotal>
           <DetailButton>
+            <Link to="/form">
             <DetailBuy>Comprar</DetailBuy>
+            </Link>
+            <Link to="/cart">
             <DetailAdd>Agregar al carrito</DetailAdd>
+            </Link>
           </DetailButton>
         </DetailDiv>
         <DetailTextContainer>
@@ -57,15 +65,22 @@ function CardDetail() {
           </p>
         </DetailTextContainer>
       </ImgContainer>
-    </>
+    </Box>
   );
 }
 
 export default CardDetail;
 
+const Box = styled.div`
+  background-image: url(${Backg});
+  background-position: right;
+  background-repeat: no-repeat;
+  height: auto;
+`
+
 const ImgContainer = styled.div`
-  margin-top: 110px;
-  margin-left: auto;
+  /* margin-top: 10px; */
+  margin-left: 40px;
   margin-right: auto;
   max-width: 1200px;
   display: grid;
@@ -74,6 +89,8 @@ const ImgContainer = styled.div`
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   place-content: center;
+  padding-top: 30px;
+  width: 100%;
 
   /* Movil */
   @media only screen and (max-width: 600px) {
@@ -178,6 +195,7 @@ const DetailDiv = styled.div`
   grid-area: 1 / 3 / 3 / 4;
   max-width: 310px;
   height: 440px;
+  background: #fff;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
 
