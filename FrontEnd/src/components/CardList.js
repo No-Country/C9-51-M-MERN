@@ -3,6 +3,7 @@ import Card from "./Card";
 import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 import Backg from "../assets/images/bg.png"
+import { Link } from "react-router-dom"
 
 
 
@@ -11,11 +12,13 @@ const CardList = () => {
   console.log(products);
 
   return (
+    <Link to="/detalleproducto">
     <CardsContainer>
       {products.map((product) => (
         <Card key={product._id} product={product} />
-      ))}
+        ))}
     </CardsContainer>
+    </Link>
   );
 };
 

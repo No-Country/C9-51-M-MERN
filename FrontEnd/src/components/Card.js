@@ -29,7 +29,7 @@ const Card = ({ product }) => {
         <>
             <CardContainer onClick={openModal}>
                 <div onClick={()=><CardDetail/> }>
-                    <img src={image} alt={name} style={{ width: '100%' }} />
+                    <CardImage src={image} alt={name} />
                     <Nombres>
                         <Nombre>{name}</Nombre>
                         <Tipo>{description}</Tipo>
@@ -80,8 +80,8 @@ export default Card
 
 /**** Styles Container ****/
 const CardContainer = styled.figure`
-    width: 310px;
-    height: 423px;
+    width: 350px;
+    height: 400px;
     background: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -92,6 +92,14 @@ const CardContainer = styled.figure`
     padding: 35px 20px 20px 20px;
     cursor: pointer;
 `
+
+const CardImage = styled.img`
+  width: 250px; 
+  height: 204px; 
+  display: block;
+  margin: auto;
+  margin-top: -20px 
+`;
 
 /**** Styles Cards ****/
 // const CardFigcaption = styled.figcaption`
@@ -160,6 +168,7 @@ line-height: 45px;
 text-align: center;
 color: #181818;
 top: -10px;
+margin-bottom: 10px;
 display: flex;
 justify-content: center;
     
