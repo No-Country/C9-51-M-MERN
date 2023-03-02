@@ -4,28 +4,28 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     name: {
         type: String,
-        requiere: true,
+        require: true,
         allowNull: false,
       },
 
     description: {
         type: String,
-        requiere: true,
+        require: true,
       },
     
     image: {
         type: String,
-        requiere: true,
+        require: true,
       },
 
     quantity: {
         type: Number,
-        requiere: true,
+        require: true,
       },
 
     price: {
         type: Number,
-        requiere: true,
+        require: true,
       },
 
     categoryId: {

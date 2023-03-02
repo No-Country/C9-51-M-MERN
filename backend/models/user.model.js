@@ -4,25 +4,25 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     userName: { 
         type: String,
-        required: true 
+        require: true 
 
     },
 
     email: { 
          type: String,
-         required: true 
+         require: true 
     },
 
     password: { 
         type: String,
-        required: true,
+        require: true,
         minlength: 7 
 
     },
 
     isAdmin: { 
         type: Boolean,
-        required: true , 
+        require: true , 
         default: false
     },
 
