@@ -14,6 +14,7 @@ const addToCart = async (req, res, next) => {
     // Verificar si el producto existe en la base de datos
     const product = await Product.findById(productId);
 
+
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
@@ -37,6 +38,7 @@ const addToCart = async (req, res, next) => {
       return res.status(200).json({  data:{existingCartItem}, message: 'Producto actualizado en el carrito.' });
     } else {
       newCartItem = new Cart({
+
         productId,
         quantity,
       });
@@ -48,6 +50,7 @@ const addToCart = async (req, res, next) => {
       data: { newCartItem },
       message: "Product added to cart successfully",
     });
+
   } catch (error) {
     next(error);
   }
@@ -77,3 +80,4 @@ const removeFromCart = async (req, res, next) => {
 };
 
 module.exports = { addToCart, removeFromCart };
+
