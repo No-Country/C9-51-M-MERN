@@ -1,11 +1,11 @@
-import {HiOutlineShoppingCart} from 'react-icons/hi';
+// import {HiOutlineShoppingCart} from 'react-icons/hi';
 import styled from "styled-components";
 import { useState, useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
-import CartView from './CartView/CartView';
-import CardDetail from './CardDetail/CardDetail';
+// import CartView from './CartView/CartView';
+// import CardDetail from './CardDetail/CardDetail';
 
 
 
@@ -23,38 +23,38 @@ const Card = ({ product }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-    const {_id, name , description, image, price} = product
+    const {id, nombre, precio, quantity, tipo, image} = product
 
     return (
         <>
             <CardContainer onClick={openModal}>
-                <div onClick={()=><CardDetail/> }>
-                    <img src={image} alt={name} style={{ width: '100%' }} />
+                <div>
+                    <img src={image} alt={nombre} />
                     <Nombres>
-                        <Nombre>{name}</Nombre>
-                        <Tipo>{description}</Tipo>
+                        <Nombre>{nombre}</Nombre>
+                        <Tipo>{tipo}</Tipo>
                     </Nombres>
-                    <PrecioS>$ <p>{price}</p></PrecioS>
+                    <PrecioS>$ <p>{precio}</p></PrecioS>
                 </div>
                 
                 <ContainerButt>
                     <Link to="/form" className='link' > Comprar</Link>
-                    <AddProduct onClick={()=>{<CartView/>; addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
+                    <button className='cart' onClick={()=>{ addToCart(id); handleShow()}}> Agregar al Carrito</button>
                 </ContainerButt>  
             </CardContainer>
 
-            <Modal key={_id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
+            <Modal key={id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
                 style={{height: '370px', zIndex: 9999}}>
                     <ModHeader  closeButton>
                     ¡El producto fue añadido con éxito!
                     </ModHeader>
                     <Modal.Body>
                         <ModBody>
-                            <ModImg src={image} alt={name} />
+                            <ModImg src={image} alt={nombre} />
                             <ModText>
-                                <Nombre><ModText>{name}</ModText></Nombre>
-                                <Tipo><ModText>{description}</ModText></Tipo>
-                                <ModPrecio>$<p>{price} x 1</p></ModPrecio>
+                                <Nombre><ModText>{nombre}</ModText></Nombre>
+                                <Tipo><ModText>{tipo}</ModText></Tipo>
+                                <ModPrecio>$<p>{precio} x 1</p></ModPrecio>
                             </ModText>
                         </ModBody>
                     </Modal.Body>
@@ -89,45 +89,18 @@ const CardContainer = styled.figure`
     order: 0;
     flex-grow: 0;
     margin: 20px;
-    padding: 35px 20px 20px 20px;
+    padding: 30px ;
     cursor: pointer;
+
+    div {
+        
+        img {
+            height: 200px         
+        }
+    }
+    
 `
 
-/**** Styles Cards ****/
-// const CardFigcaption = styled.figcaption`
-// position: relative;
-// top:-20px;
-// width:100%;
-// height: 35rem;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// font-weight: bold;
-// padding-bottom: 0.1rem;
-
-
-// &:hover svg{
-//     fill: var(--orange);
-// }
-// `
-
-// const Favorito = styled.div`
-//     fill: transparent;
-//     cursor: pointer;
-//     height: 45px;
-//     width: 45px;
-//     padding-top: 10px;
-//     position: relative;
-//     left: 100px;
-//     top: 30px;
-//     z-index: 30;
-//     transition: all 300ms;
-
-//     &:active {
-//         transform: scale(1.25, 1.25);
-//         transition: transform .2s;
-//     }
-// `
 const Nombres = styled.div`
     display: flex;
     flex-direction: column;
@@ -168,92 +141,12 @@ justify-content: center;
     font-weight: 400;
     font-size: 28px;
     padding-top: -28px;
-
   }
-    /* color: var(--orange);
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    position: relative;
-     */
 `
-
-// const Precio = styled.p`
-//     font-weight: 600;
-//     font-size: 28px;
-//     padding-top: 5px;
-// `
 
 
 /**** Styles Modal *****/
-const ModalArticle = styled.article`
-    position: fixed;
-    z-index: 99999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--dark35);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
 
-const ModalContainer = styled.div`
-    position: relative;
-    background-color: white;
-    box-sizing: content-box;
-    width: 35rem;
-    height: 83vh;
-    padding: 1rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 0.15rem solid var(--orange);
-    border-radius: 1rem;
-    justify-content: space-evenly;
-    background-color: ${props => props.bgColor};
-`
-
-const ModalClose = styled.button`
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--beige);
-    border-radius: 5px;
-    border-color: var(--orange75);
-    color: var(--orange75);
-    font-weight: bold;
-`
-const Img = styled.img`
-    width: 250px;
-`
-const PrecioModS = styled.p`
-    color: ${props => props.colorPrecio};
-    font-family: 'Righteous', cursive;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    top: -10px;
-
-    p{
-        font-weight: 600;
-        font-size: 28px;
-        padding-top: 5px;
-  }
-`
-const Info = styled.p`
-    position: relative;
-    top: -30px;
-    font-size: 16px;
-    font-family: 'Satisfy', cursive;
-    margin: 0px 30px;
-`
 const ContainerButt= styled.div`
     display: flex;
     flex-direction: row;
@@ -287,34 +180,35 @@ const ContainerButt= styled.div`
             box-shadow: none;
             transform: translateY(4px);}
         }
-`
-const AddProduct= styled.button`
-    background: var(--orange);
-    border-radius: 5px;
-    color:white;
-    cursor: pointer;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #ffffff; 
-    margin-left:7px;
-    position: relative;
-    top: -10px;
-    border: none;
-    width: 162px;
-    height:36px;
-    text-align: center;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
+    .cart{
+        background: var(--orange);
+        border-radius: 5px;
+        color:white;
+        cursor: pointer;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff; 
+        margin-left:7px;
+        padding: 7px 0;
+        position: relative;
+        top: -10px;
+        border: none;
+        width: 162px;
+        height:36px;
+        text-align: center;
+        box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 3px 3px 0 rgba(0,0,0,0.19);
 
-    @media screen and (min-width: 1024px){
-    &:hover{background-color: var(--liOrange) !important;}}
+        @media screen and (min-width: 1024px){
+        &:hover{background-color: var(--liOrange) !important;}}
 
-    &:active {
-        background-color: var(--orange) !important;
-        box-shadow: none;
-        transform: translateY(4px);}
+        &:active {
+            background-color: var(--orange) !important;
+            box-shadow: none;
+            transform: translateY(4px);}
+        }
 `
 
 /**** Styles ModalAddCart ****/

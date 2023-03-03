@@ -23,7 +23,7 @@ const CartView = () =>{
                 <h4>Ups, este carrito esta vacío.</h4>
               </CartTitleView>
             </DivContainerVacio>)
-          : state.cart.map((item) => <CardContainer key={item._id} item={item} />)
+          : state.cart.map((item) => <CardContainer key={item.id} item={item} />)
         }
         {!state.cart[0] 
               ? (<Link to="/products">
