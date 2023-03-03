@@ -5,7 +5,8 @@ import { ProductsContext } from "../context/ProductsProvider";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
 // import CartView from './CartView/CartView';
-// import CardDetail from './CardDetail/CardDetail';
+import CardDetail from './CardDetail/CardDetail';
+
 
 
 
@@ -30,16 +31,18 @@ const Card = ({ product }) => {
             <CardContainer onClick={openModal}>
                 <div>
                     <img src={image} alt={nombre} />
+
                     <Nombres>
                         <Nombre>{nombre}</Nombre>
                         <Tipo>{tipo}</Tipo>
                     </Nombres>
                     <PrecioS>$ <p>{precio}</p></PrecioS>
                 </div>
-                
-                <ContainerButt>
+                 <ContainerButt>
                     <Link to="/form" className='link' > Comprar</Link>
                     <button className='cart' onClick={()=>{ addToCart(id); handleShow()}}> Agregar al Carrito</button>
+
+         
                 </ContainerButt>  
             </CardContainer>
 
@@ -80,8 +83,8 @@ export default Card
 
 /**** Styles Container ****/
 const CardContainer = styled.figure`
-    width: 310px;
-    height: 423px;
+    width: 350px;
+    height: 400px;
     background: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -93,13 +96,51 @@ const CardContainer = styled.figure`
     cursor: pointer;
 
     div {
-        
+   
         img {
             height: 200px         
         }
     }
     
 `
+
+
+
+/**** Styles Cards ****/
+// const CardFigcaption = styled.figcaption`
+// position: relative;
+// top:-20px;
+// width:100%;
+// height: 35rem;
+// display: flex;
+// flex-direction: column;
+// align-items: center;
+// font-weight: bold;
+// padding-bottom: 0.1rem;
+
+
+// &:hover svg{
+//     fill: var(--orange);
+// }
+// `
+
+// const Favorito = styled.div`
+//     fill: transparent;
+//     cursor: pointer;
+//     height: 45px;
+//     width: 45px;
+//     padding-top: 10px;
+//     position: relative;
+//     left: 100px;
+//     top: 30px;
+//     z-index: 30;
+//     transition: all 300ms;
+
+//     &:active {
+//         transform: scale(1.25, 1.25);
+//         transition: transform .2s;
+//     }
+// `
 
 const Nombres = styled.div`
     display: flex;
@@ -133,6 +174,7 @@ line-height: 45px;
 text-align: center;
 color: #181818;
 top: -10px;
+margin-bottom: 10px;
 display: flex;
 justify-content: center;
     

@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import Search from "../assets/images/lupa.png";
 import Checked from "../assets/images/checked.png"
-// import Header from "./Header";
 import { Link } from "react-router-dom";
+import Bg from "../assets/images/bg.png"
 
 const TarjetaCD = () => {
   return (
-    <>
-      {/* <Header /> */}
-      <CardContainer>
+  <Wrapper>
+    <CardContainer>
         <Purchase>
          <Confirmed src={Checked}/>
          <Title>¡Listo! Tu compra ha sido confirmada</Title>
@@ -29,7 +28,7 @@ const TarjetaCD = () => {
         </ButtonWrapper>
         </Link>
       </CardContainer>
-      </>
+      </Wrapper>
   );
 }
 
@@ -47,6 +46,7 @@ const ButtonStart = styled.button`
   font-weight: 300;
   height: 49px;
   margin-top: 15px;
+  margin-bottom: 10px;
   width: 200px;
 `;
 
@@ -55,12 +55,19 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
+const Wrapper = styled.div`
+   background-image: url(${Bg});
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100vh;
+   padding: 60px 0;
+`
+
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: auto;
-  margin: 30px 40px 60px;
+  margin: 40px 80px 60px;
   
   @media (max-width: 500px) {
     margin: 30px 15px 0;
@@ -87,7 +94,7 @@ const Description = styled.p`
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  margin: 20px 0 0 40px;
+  margin: 20px 10px 0px 40px;
 
   @media (max-width: 500px) {
     margin-left: 20px;
@@ -153,8 +160,13 @@ const Title = styled.p`
   margin: 30px 0 0 100px;
   width: 100%;
 
+  @media (max-width: 350px) {
+    font-size: 14px;
+    width: auto;
+  }
+
   @media (max-width: 500px) {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 26px;
     margin-top: 20px;
     margin-left: 80px;

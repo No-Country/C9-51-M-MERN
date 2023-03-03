@@ -35,7 +35,7 @@ const CartView = () =>{
                     <CartTotal>Total: $3000</CartTotal>
                   </CartTotalDiv>
                   <CartFinish>     
-                    <Link to="/cargatarjeta">
+                    <Link to="/form">
                       <CartContinue>
                         <p>Continuar Compra</p>
                       </CartContinue>

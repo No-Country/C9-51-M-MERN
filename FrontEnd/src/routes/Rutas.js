@@ -10,6 +10,9 @@ import Footer from "../components/Footer"
 import Nopassword from "../components/Nopassword"
 import CardDetail from "../components/CardDetail/CardDetail"
 import ShoppingCart from "../components/shopping/ShoppingCart"
+import Alta from "../components/Alta"
+import Form from "../components/Form"
+import CartView from "../components/CartView/CartView"
 // import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
 // import Error404 from "../components/Error404"
 
@@ -28,7 +31,10 @@ const Rutas = () => {
                 <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>
                 <Route path="/cart" element={<ShoppingCart/>}/>
                 <Route path="/nopassword" element={<Nopassword/>}/>
-                <Route path="/detalleProducto" element={<CardDetail/>}/>            
+                <Route path="/detalleProducto" element={<CardDetail/>}/>
+                <Route path="/alta" element={<Alta/>}/> 
+                <Route path="/form" element={<Form/>} />  
+                <Route path="/cart" element={<CartView/>} />               
                 {/* <Route path="*" element={<Error404/>}/>*/}
             </Routes>
             <Footer />

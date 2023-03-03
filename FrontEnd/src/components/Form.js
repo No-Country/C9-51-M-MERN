@@ -38,7 +38,7 @@ const Form = () => {
               <FlavorPurchase>Sabor: Espirulina</FlavorPurchase>
               <QuantityPurchase>Cantidad (4 disponibles)</QuantityPurchase>
               <Link to="/cargatarjeta">
-             <ButtonPurcharse>Realizar compra</ButtonPurcharse>
+             <ButtonPurcharse>Continuar el pago</ButtonPurcharse>
               </Link>
             </CardPurchase>
         </SectionPurchase>

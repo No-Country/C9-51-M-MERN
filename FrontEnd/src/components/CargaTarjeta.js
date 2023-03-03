@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Header from "./Header";
+// import Header from "./Header";
 import { Link } from "react-router-dom";
 
 
 const CargaTarjeta = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <ContainerCard>
         <SectionForm>
           <FormField>
@@ -33,14 +33,14 @@ const CargaTarjeta = () => {
           </Gender>
         </SectionForm>
 
-        <SectionCard>
+        {/* <SectionCard>
             <Card />
           <TextCard>
             <strong>Atención: </strong> 
             al pulsar en “Realizar compra”, se comenzará a procesar el
             pago y se aplicarán cargos en la tarjeta ingresada.
           </TextCard>
-        </SectionCard>
+        </SectionCard> */}
 
         <SectionPurchase>
             <CardPurchase>
@@ -70,31 +70,31 @@ export default CargaTarjeta;
    width: 100%;
  `;
 
- const SectionCard = styled.section`
-   display: flex;
-   flex-direction: column;
-   height: auto;
-   width: 25%;
- `;
+//  const SectionCard = styled.section`
+//    display: flex;
+//    flex-direction: column;
+//    height: auto;
+//    width: 25%;
+//  `;
 
- const Card = styled.img`
-   background: #181818;
-   border: none;
-   border-radius: 10px;
-   height: 180px;
-   display: flex;
-   flex-direction: column;
-   margin-top: 80px;
-   width: 90%;
- `;
+//  const Card = styled.img`
+//    background: #181818;
+//    border: none;
+//    border-radius: 10px;
+//    height: 180px;
+//    display: flex;
+//    flex-direction: column;
+//    margin-top: 80px;
+//    width: 90%;
+//  `;
 
- const TextCard = styled.p`
-   font-family: "Poppins";
-   font-size: 14px;
-   text-align: right;
-   margin-top: 80px;
-   width: 90%;
- `;
+//  const TextCard = styled.p`
+//    font-family: "Poppins";
+//    font-size: 14px;
+//    text-align: right;
+//    margin-top: 80px;
+//    width: 90%;
+//  `;
 
  const CardSecurity = styled.section`
    width: 380px;
@@ -102,11 +102,7 @@ export default CargaTarjeta;
 
  const LabelSecurity = styled.label`
    font-size: 16px;
-   /* margin-bottom: 10px; */
    margin-right: 80px;
-
-   /* background: red; */
-   /* width: 45%; */
  `;
 
  const InputSecurity = styled.input`
