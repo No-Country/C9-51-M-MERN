@@ -34,7 +34,7 @@ const Rutas = () => {
                 <Route path="/detalleProducto" element={<CardDetail/>}/>
                 <Route path="/alta" element={<Alta/>}/> 
                 <Route path="/form" element={<Form/>} />  
-                {/* <Route path="/cart" element={<CartView/>} />                */}
+                <Route path="/cart" element={<CartView/>} />               
                 {/* <Route path="*" element={<Error404/>}/>*/}
             </Routes>
             <Footer />

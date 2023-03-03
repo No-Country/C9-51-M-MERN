@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
-import CartView from './CartView/CartView';
+// import CartView from './CartView/CartView';
 import CardDetail from './CardDetail/CardDetail';
 
 
@@ -28,7 +28,7 @@ const Card = ({ product }) => {
     return (
         <>
             <CardContainer onClick={openModal}>
-                <div onClick={()=><CardDetail/> }>
+                <div>
                     <CardImage src={image} alt={name} />
                     <Nombres>
                         <Nombre>{name}</Nombre>
@@ -38,7 +38,7 @@ const Card = ({ product }) => {
                 </div>
                  <ContainerButt>
                     <Link to="/form" className='link' > Comprar</Link>
-                    <AddProduct onClick={()=>{<CartView/>; addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
+                    <AddProduct onClick={()=>{ addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
             </CardContainer>
 
@@ -99,7 +99,6 @@ const CardContainer = styled.figure`
 `
 
 const CardImage = styled.img`
-  width: 250px; 
   height: 204px; 
   display: block;
   margin: auto;
