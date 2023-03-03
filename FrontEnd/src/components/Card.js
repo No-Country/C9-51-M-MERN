@@ -84,7 +84,7 @@ export default Card
 /**** Styles Container ****/
 const CardContainer = styled.figure`
     width: 350px;
-    height: 400px;
+    height: 440px;
     background: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -98,11 +98,12 @@ const CardContainer = styled.figure`
     div {
    
         img {
-            height: 200px         
+            height: 200px;
+            display: block;
+            margin: auto;         
         }
     }
-    
-`
+`;
 
 
 

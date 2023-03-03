@@ -1,12 +1,10 @@
 import styled from "styled-components";
-// import Header from "./Header";
 import { Link } from "react-router-dom";
 
 
 const CargaTarjeta = () => {
   return (
     <>
-      {/* <Header /> */}
       <ContainerCard>
         <SectionForm>
           <FormField>
@@ -44,9 +42,9 @@ const CargaTarjeta = () => {
 
         <SectionPurchase>
             <CardPurchase>
-              <TitlePurchase>Alga Spirulina - 60 capsulas x 500mg</TitlePurchase>
-              <PricePurchase>$1650</PricePurchase>
-              <InstallmentsPurchase>en 6 x $340</InstallmentsPurchase>
+              <TitlePurchase>ENSURE advance</TitlePurchase>
+              <PricePurchase>$12000</PricePurchase>
+              <InstallmentsPurchase>en 6 x $2000</InstallmentsPurchase>
               <TextPayPurcharse>Ver todos los medios de pago</TextPayPurcharse>
               <FlavorPurchase>Sabor: Espirulina</FlavorPurchase>
               <QuantityPurchase>Cantidad (4 disponibles)</QuantityPurchase>
@@ -102,7 +100,7 @@ export default CargaTarjeta;
 
  const LabelSecurity = styled.label`
    font-size: 16px;
-   margin-right: 80px;
+   margin-right: 60px;
  `;
 
  const InputSecurity = styled.input`

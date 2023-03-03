@@ -10,6 +10,7 @@ import { Link } from "react-router-dom"
 
 
 
+
 const ShoppingCart = () => {
 
   const {clearCart, state} = useContext(ProductsContext);
@@ -49,7 +50,9 @@ const ShoppingCart = () => {
                 </Link>)
               : (<ButtonsContainer>
                   <ButtonLimpiarCarro onClick={() => clearCart()}>Limpiar Carrito</ButtonLimpiarCarro>  
+                  <Link to="/tarjetacd">
                   <ButtonFinalizarCompra>Finalizar Compra</ButtonFinalizarCompra>
+                  </Link>
                 </ButtonsContainer>)
             }
           </ContainerText>
@@ -227,6 +230,7 @@ const ButtonsContainer = styled.div`
 const ButtonLimpiarCarro = styled.button` width: 200px;
   color:white;
   background-color: var(--orange);
+  cursor: pointer;
   margin: 10px;
   padding: 5px;
   border-radius: 0.5rem;
@@ -254,6 +258,7 @@ const ButtonFinalizarCompra = styled.button`
   border-radius: 0.5rem;
   border: 1px solid var(--orange);
   color: var(--orange) ;
+  cursor: pointer;
   background-color: var(--beige);
   font-family: "Nunito", sans-serif;
   font-size: 14px;
