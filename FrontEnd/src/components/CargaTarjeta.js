@@ -102,11 +102,7 @@ export default CargaTarjeta;
 
  const LabelSecurity = styled.label`
    font-size: 16px;
-   /* margin-bottom: 10px; */
    margin-right: 80px;
-
-   /* background: red; */
-   /* width: 45%; */
  `;
 
  const InputSecurity = styled.input`

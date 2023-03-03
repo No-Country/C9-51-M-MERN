@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Search from "../assets/images/lupa.png";
 import Checked from "../assets/images/checked.png"
-// import Header from "./Header";
 import { Link } from "react-router-dom";
 import Bg from "../assets/images/bg.png"
 
@@ -9,7 +8,6 @@ const TarjetaCD = () => {
   return (
   <Wrapper>
     <CardContainer>
-        {/* <Header /> */}
         <Purchase>
          <Confirmed src={Checked}/>
          <Title>¡Listo! Tu compra ha sido confirmada</Title>
