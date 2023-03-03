@@ -9,7 +9,7 @@ import {IoMdRemove} from 'react-icons/io';
 
 const CardContainer = ({ item }) => {
   const { clearCart, delFromCart, addToCart, state } = useContext(ProductsContext);
-  const { _id, name, description, image, price, quantity } = item;
+  //const { name, description, image, price, quantity } = item;
 
   let count = 0;
 
@@ -19,7 +19,7 @@ const CardContainer = ({ item }) => {
 
   return (
     <>
-      <Container>
+      <Container key={item?.id}>
         <ContainerTitle>
           <CartTitle>CARRITO DE COMPRAS</CartTitle>
           <CartItems>{count} PRODUCTOS</CartItems>
@@ -36,26 +36,26 @@ const CardContainer = ({ item }) => {
           <CartDiv>
             <CartContainer>
               <CartImagen>
-                <img src={image} alt={name} />
+                <img src={item?.image} alt={item?.name} />
               </CartImagen>
               <CartInfo>
-                <h3>{name}</h3>
-                <p>{description}</p>
+                <h3>{item?.name}</h3>
+                <p>{item?.description}</p>
               </CartInfo>
 
               <CartPriceDiv>
                 <CartCount>
-                  <CartRest><IoMdRemove style={{ paddingTop:"13px", fontWeight: "bold" , color:"#ef8557"}} onClick={()=>delFromCart(_id)} /></CartRest>
-                  <CartCountDiv>{`${quantity}`}</CartCountDiv>
-                  <CartAdd><IoIosAdd style={{ position:"relative", color:"#ef8557"}} onClick={()=>addToCart(_id)}/></CartAdd>
+                  <CartRest><IoMdRemove style={{ paddingTop:"13px", fontWeight: "bold" , color:"#ef8557"}} onClick={()=>delFromCart(item?.id)} /></CartRest>
+                  <CartCountDiv>{`${item?.quantity}`}</CartCountDiv>
+                  <CartAdd><IoIosAdd style={{ position:"relative", color:"#ef8557"}} onClick={()=>addToCart(item?.id)}/></CartAdd>
                 </CartCount>
 
-                <CartPrice>${`${price*quantity}`}</CartPrice>
+                {/* <CartPrice>${`${price*quantity}`}</CartPrice> */}
               </CartPriceDiv>
 
              <div>
               <Link to="/cart" className="modCart">
-                  <CartDelete onClick={(all)=>delFromCart(_id, all)}>
+                  <CartDelete onClick={(all)=>delFromCart(item?.id, all)}>
                     <img src="../../img/Eliminar.jpg" alt="" />
                   </CartDelete>
                 </Link>

@@ -1,0 +1,86 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "nombre": "ENSURE Advance",
+      "tipo": "Aumenta tu energia y vitalidad  Peso Neto: 980 gs",
+      "image": "https://i.ibb.co/LgJXNjN/ensure.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 2,
+      "nombre": "vitamina K",
+      "tipo": "vitamina para aumentar la masa muscular ",
+      "image": "https://i.ibb.co/Msj6vGd/valc.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 4500
+    },
+    {
+      "id": 3,
+      "nombre": "ribotrin",
+      "tipo": "aumenta tu energia",
+      "image": "https://i.ibb.co/Pt4hTQt/bio.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 4,
+      "nombre": "vitamina f",
+      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/qMCM9cH/colag.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 5,
+      "nombre": "vitamina f",
+      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/7NXdqrZ/vit.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 6,
+      "nombre": "vitamina f",
+      "description": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/vXCz9Gh/amin.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 7,
+      "nombre": "vitamina f",
+      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 8,
+      "nombre": "vitamina f",
+      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    },
+    {
+      "id": 9,
+      "nombre": "vitamina f",
+      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000
+    }
+  ],
+  "cart": []
+}

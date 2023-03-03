@@ -7,9 +7,9 @@ import Main from "../components/Main"
 import Login from "../components/Login"
 import Register from "../components/Register"
 import Footer from "../components/Footer"
-import CardContainer from "../components/CartView/CardContainer"
 import Nopassword from "../components/Nopassword"
 import CardDetail from "../components/CardDetail/CardDetail"
+import ShoppingCart from "../components/shopping/ShoppingCart"
 import Alta from "../components/Alta"
 import Form from "../components/Form"
 import CartView from "../components/CartView/CartView"
@@ -29,7 +29,7 @@ const Rutas = () => {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/tarjetacd" element={<TarjetaCD/>}/>
                 <Route path="/cargatarjeta" element={<CargaTarjeta/>}/>
-                <Route path="/cart" element={<CardContainer/>}/>
+                <Route path="/cart" element={<ShoppingCart/>}/>
                 <Route path="/nopassword" element={<Nopassword/>}/>
                 <Route path="/detalleProducto" element={<CardDetail/>}/>
                 <Route path="/alta" element={<Alta/>}/> 

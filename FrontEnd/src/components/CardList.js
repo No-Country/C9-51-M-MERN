@@ -13,8 +13,10 @@ const CardList = () => {
   return (
     <CardsContainer>
       {products.map((product) => (
-        <Card key={product._id} product={product} />
-        ))}
+        <Card key={product.id} product={product} />
+      ))}
+
+
     </CardsContainer>
   );
 };

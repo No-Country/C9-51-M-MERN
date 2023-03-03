@@ -2,7 +2,7 @@
 
 :root {
   --dark: #181818;
-  --dark80: #252827CC;
+  --dark80: #252827e8;
   --dark35: #2629285a;
   --dark10: #2629281a;
   --dark65: #262928a6;
@@ -34,7 +34,7 @@ body {
 /* fin del mejorado de uso de los rem */
 
 body {
-  font-family: var(--text-font);
+  font-family: var(--poppins);
 }
 
 a {

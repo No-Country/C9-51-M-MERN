@@ -1,155 +1,167 @@
-import { useEffect, createContext, useReducer } from "react";
+import { useEffect, createContext, useReducer } from "react"
 import { TYPES } from "../actions/ShoppActions";
-import {
-  shoppingInitialState,
-  shoppingReducer,
-} from "../reducer/shoppingReducer";
+import { shoppingInitialState, shoppingReducer } from "../reducer/shoppingReducer";
 import axios from "axios";
+
+
 
 export const ProductsContext = createContext();
 
+
 const ProductsProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
 
-/* Solicitud y cambio de Estado de Productos */
-  const getDataProd = async () => {
+
+  const getData = async () => {
     const ENDPOINT = {
-      products: "https://e-commerce-backend-70bp.onrender.com/products",
+      products: "http://localhost:5500/products",
+      cart: "http://localhost:5500/cart",
     };
-    const { data } = await axios.get(ENDPOINT.products);
     return {
-      resProducts: data.products,
+      resProducts: await axios.get(ENDPOINT.products),
+      resCart: await axios.get(ENDPOINT.cart),
     };
-  };
-  
-  const updateStateProd = async () => {
-    const { resProducts } = await getDataProd();
-    //console.log(resProducts);
-    return dispatch({
-      type: TYPES.READ_STATE_PRODUCTS,
-      payload: resProducts,
-    });
-  };
-  
-/* Solicitud y cambio de Estado de Productos del Carrito */
-  const getDataCart = async () => {
-    const ENDPOINT = {
-      cart: "https://e-commerce-backend-70bp.onrender.com/cart",
-    };
-    const { data } = await axios.get(ENDPOINT.cart);
-    return {
-      resCart: data.cart,
-    };
-  };
-  const updateStateCart = async () => {
-    const { resCart } = await getDataCart();
-    return dispatch({
-      type: TYPES.READ_STATE_CART,
-      payload: resCart,
-    });
   };
 
-/* Agregar Productos al Carrito */
-  const addToCart = async (_id) => {
+  const updateState = async () => {
+    const { resProducts, resCart } = await getData();
+
+    dispatch({ type: TYPES.READ_STATE, payload: [resProducts.data, resCart.data] });
+  };
+
+
+
+  const addToCart = async (id) => {
     const delay = 100;
-    const ENDPOINT = {
-      products: "https://e-commerce-backend-70bp.onrender.com/products",
-      cart: "https://e-commerce-backend-70bp.onrender.com/cart"
+    const endpoints = {
+      products: "http://localhost:5500/products",
+      cart: "http://localhost:5500/cart",
     };
-    const resProducts = await axios.get(ENDPOINT.products)
-    const resCart = await axios.get(ENDPOINT.cart);
-    
-    const productsList = resProducts.data.products,
-      cartItems = resCart.data.cart; 
+    const resProducts = await axios.get(endpoints.products),
+      resCart = await axios.get(endpoints.cart);
 
-    const newItem = productsList.find((product) => product._id === _id),
-      itemInCart = cartItems.find((item) => item._id === _id);
+    const productsList = resProducts.data,
+      cartItems = resCart.data;
+
+    const newItem = productsList.find((product) => product.id === id),
+      itemInCart = cartItems.find((item) => item.id === id);
+
+    let endpoint
+    const options = {
+      headers: "content-type: application/json",
+    };
 
     if (!itemInCart) {
-      await axios.post("https://e-commerce-backend-70bp.onrender.com/cart")
-      newItem.quantity = 1;
+      options.method = "POST"
+      endpoint = `http://localhost:5500/cart`
+      newItem.quantity = 1
+      options.data = JSON.stringify(newItem)
     } else {
-      await axios.put(`https://e-commerce-backend-70bp.onrender.com/cart/${itemInCart._id}`)
-      itemInCart.quantity = itemInCart.quantity += 1;
+      options.method = "PUT"
+      endpoint = `http://localhost:5500/cart/${itemInCart.id}`
+      itemInCart.quantity = itemInCart.quantity += 1
+      options.data = JSON.stringify(itemInCart)
     }
+    await axios(endpoint, options)
 
-    dispatch({ type: TYPES.ADD_TO_CART, payload: _id });
+    dispatch({ type: TYPES.ADD_TO_CART, payload: id });
 
     setTimeout(async () => {
-      await updateStateProd();
-      await updateStateCart();
-    }, delay);
+      await updateState()
+    }, delay)
   };
 
-/* Eliminar uno/todos los productos del carrito */
-    const delFromCart = async (_id, all) => {
-      let delay = 100;
-      const resCart = await axios.get("https://e-commerce-backend-70bp.onrender.com/cart")
-      const cartItems = resCart.data.cart
+  const delFromCart = async (id, all) => {
 
-      const itemToDelete = cartItems.find((item) => item._id === _id)
+    let delay = 100;
+    const resCart = await axios.get("http://localhost:5500/cart")
+    const cartItems = resCart.data
 
-      if (itemToDelete) {
-        let endpoint = `https://e-commerce-backend-70bp.onrender.com/cart/${itemToDelete._id}`
-        if (!all) {
-          if(itemToDelete.quantity > 1) {
-            await axios.put(endpoint)
-            itemToDelete.quantity = itemToDelete.quantity - 1;
-          }else{
-            await axios.delete(endpoint)
-          }
+    const itemToDelete = cartItems.find((item) => item.id === id)
+
+    if (itemToDelete) {
+
+      let endpoint = `http://localhost:5500/cart/${itemToDelete.id}`
+
+      if (!all) {
+
+        const options = {
+          headers: "content-type: application/json",
+        };
+
+        if (itemToDelete.quantity > 1) {
+          options.method = "PUT";
+          itemToDelete.quantity = itemToDelete.quantity - 1;
+          options.data = JSON.stringify(itemToDelete)
         } else {
-          await axios.delete(endpoint)
+          options.method = "DELETE"
         }
+        await axios(endpoint, options)
+      } else {
+        const options = {
+          method: "DELETE",
+          headers: "content-type: application/json"
+        }
+        await axios(endpoint, options)
+      }
+    }
+
+    setTimeout(async () => {
+      await updateState()
+    }, delay)
+
+  };
+
+  const clearCart = async () => {
+
+    let delay = 100;
+    const resCart = await axios.get("http://localhost:5500/cart")
+    const cartItems = resCart.data
+
+    cartItems.forEach(async item => {
+
+      let endpoint = `http://localhost:5500/cart/${item.id}`
+
+      const options = {
+        method: "DELETE",
+        headers: "content-type: application/json",
       }
 
-      setTimeout(async () => {
-        await updateStateProd();
-        await updateStateCart();
-      }, delay)
-    };
+      await axios(endpoint, options)
+    });
 
-/* Limpiar Carrito */
-    const clearCart = async () => {
-      let delay = 100;
-      const resCart = await axios.get("https://e-commerce-backend-70bp.onrender.com/cart")
-      const cartItems = resCart.data.cart
-
-      cartItems.forEach(async item => {
-        let endpoint = `https://e-commerce-backend-70bp.onrender.com/cart/${item._id}`;
-      
-        await axios.delete(endpoint)
-      });
-
-      setTimeout(async () => {
-        await updateStateProd();
-        await updateStateCart();
-      }, delay)
-    };
+    setTimeout(async () => {
+      await updateState()
+    }, delay)
+  }
 
   useEffect(() => {
-    updateStateProd();
-    updateStateCart();
+    updateState();
   }, []);
 
+  const handleModalOpen = () => { dispatch({ type: TYPES.OPEN_CARD_MODAL }) };
+
   const products = state.products,
-    cart = state.cart;
+    cart = state.cart
 
   const data = {
     state,
     dispatch,
-    updateStateProd,
-    updateStateCart,
+    updateState,
     addToCart,
     delFromCart,
     clearCart,
     products,
     cart,
-  };
+    handleModalOpen
+  }
 
   return (
-    <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
-  );
-};
+    <ProductsContext.Provider value={data}>
+      {children}
+    </ProductsContext.Provider>
+  )
+}
 
-export default ProductsProvider;
+export default ProductsProvider
