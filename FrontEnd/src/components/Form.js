@@ -40,7 +40,7 @@ const Form = () => {
               <InstallmentsPurchase>en 6 x $340</InstallmentsPurchase> */}
 
               <TitlePurchase>ENSURE advance</TitlePurchase>
-              <PricePurchase>$12000</PricePurchase>
+              <PricePurchase>$4100</PricePurchase>
               <InstallmentsPurchase>en 6 x $2000</InstallmentsPurchase>
               <TextPayPurcharse>Ver todos los medios de pago</TextPayPurcharse>
               <FlavorPurchase>Sabor: Espirulina</FlavorPurchase>
