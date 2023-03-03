@@ -7,11 +7,11 @@
       "image": "https://i.ibb.co/LgJXNjN/ensure.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000
+      "precio": 4100
     },
     {
       "id": 2,
-      "nombre": "vitamina K",
+      "nombre": "VALCATIL Complex",
       "tipo": "vitamina para aumentar la masa muscular ",
       "image": "https://i.ibb.co/Msj6vGd/valc.webp",
       "status": "active",
@@ -20,97 +20,60 @@
     },
     {
       "id": 3,
-      "nombre": "ribotrin",
-      "tipo": "aumenta tu energia",
-      "image": "https://i.ibb.co/Pt4hTQt/bio.webp",
+      "nombre": "ALGA Espirulina",
+      "tipo": "aumenta tu energia y mejora el rendimiento",
+      "image": "https://i.ibb.co/f4796gG/ALGAS.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000
+      "precio": 3900
     },
     {
       "id": 4,
-      "nombre": "vitamina f",
+      "nombre": "COLÁGENO",
       "tipo": "vitamina para aumentar las defensas y mejorar atencion",
       "image": "https://i.ibb.co/qMCM9cH/colag.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000
+      "precio": 7600
     },
     {
       "id": 5,
-      "nombre": "vitamina f",
-      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "nombre": "VITAMINA C",
+      "tipo": "vitamina para aumentar las defensas",
       "image": "https://i.ibb.co/7NXdqrZ/vit.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000
+      "precio": 3900
     },
     {
       "id": 6,
-      "nombre": "vitamina f",
-      "description": "vitamina para aumentar las defensas y mejorar atencion",
+      "nombre": "AMINO X",
+      "tipo": "vitamina para mejorar atencion",
       "image": "https://i.ibb.co/vXCz9Gh/amin.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000
-    },
-    {
-      "id": 7,
-      "nombre": "vitamina f",
-      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
-      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
-      "status": "active",
-      "__v": 0,
-      "precio": 12000
-    },
-    {
-      "id": 8,
-      "nombre": "vitamina f",
-      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
-      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
-      "status": "active",
-      "__v": 0,
-      "precio": 12000
-    },
-    {
-      "id": 9,
-      "nombre": "vitamina f",
-      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
-      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
-      "status": "active",
-      "__v": 0,
-      "precio": 12000
+      "precio": 6000
     }
   ],
   "cart": [
     {
-      "id": 1,
-      "nombre": "ENSURE Advance",
-      "tipo": "Aumenta tu energia y vitalidad  Peso Neto: 980 gs",
-      "image": "https://i.ibb.co/LgJXNjN/ensure.webp",
+      "id": 2,
+      "nombre": "VALCATIL Complex",
+      "tipo": "vitamina para aumentar la masa muscular ",
+      "image": "https://i.ibb.co/Msj6vGd/valc.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000,
-      "quantity": 5
-    },
-    {
-      "id": 8,
-      "nombre": "vitamina f",
-      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
-      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
-      "status": "active",
-      "__v": 0,
-      "precio": 12000,
+      "precio": 4500,
       "quantity": 1
     },
     {
-      "id": 3,
-      "nombre": "ribotrin",
-      "tipo": "aumenta tu energia",
-      "image": "https://i.ibb.co/Pt4hTQt/bio.webp",
+      "id": 6,
+      "nombre": "AMINO X",
+      "tipo": "vitamina para mejorar atencion",
+      "image": "https://i.ibb.co/vXCz9Gh/amin.webp",
       "status": "active",
       "__v": 0,
-      "precio": 12000,
+      "precio": 6000,
       "quantity": 1
     }
   ]
