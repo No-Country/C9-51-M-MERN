@@ -252,6 +252,7 @@ const ButtonContainer = styled.div`
         color:#181818;
         background: transparent;
     border: none ;
+    cursor: pointer;
     font-size: 17px;
     position: relative;
     bottom: 14px;
@@ -271,6 +272,7 @@ const ButtonContainer = styled.div`
 const ButtonMenos = styled.button`
     background: transparent;
     border: none ;
+    cursor: pointer;
     font-size: 25px;
     position: relative;
     bottom: 14px;
@@ -322,6 +324,7 @@ const ButtonMas = styled.button`
 
 const ButtonClear = styled.div`
     color:var(--orange);
+    cursor: pointer;
     background-color: transparent;
     padding: 5px 10px;
     padding-top: 10px;

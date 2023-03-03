@@ -82,5 +82,36 @@
       "precio": 12000
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": 1,
+      "nombre": "ENSURE Advance",
+      "tipo": "Aumenta tu energia y vitalidad  Peso Neto: 980 gs",
+      "image": "https://i.ibb.co/LgJXNjN/ensure.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000,
+      "quantity": 5
+    },
+    {
+      "id": 8,
+      "nombre": "vitamina f",
+      "tipo": "vitamina para aumentar las defensas y mejorar atencion",
+      "image": "https://i.ibb.co/PZqc1Nd/rickymorty.png",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000,
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "nombre": "ribotrin",
+      "tipo": "aumenta tu energia",
+      "image": "https://i.ibb.co/Pt4hTQt/bio.webp",
+      "status": "active",
+      "__v": 0,
+      "precio": 12000,
+      "quantity": 1
+    }
+  ]
 }

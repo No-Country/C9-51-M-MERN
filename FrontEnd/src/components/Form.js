@@ -2,7 +2,11 @@ import React from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+
 const Form = () => {
+
+
+
   return (
       <ContainerCard>
         <SectionForm>
@@ -31,9 +35,13 @@ const Form = () => {
 
         <SectionPurchase>
             <CardPurchase>
-              <TitlePurchase>Alga Spirulina - 60 capsulas x 500mg</TitlePurchase>
+              {/* <TitlePurchase>Alga Spirulina - 60 capsulas x 500mg</TitlePurchase>
               <PricePurchase>$1650</PricePurchase>
-              <InstallmentsPurchase>en 6 x $340</InstallmentsPurchase>
+              <InstallmentsPurchase>en 6 x $340</InstallmentsPurchase> */}
+
+              <TitlePurchase>ENSURE advance</TitlePurchase>
+              <PricePurchase>$12000</PricePurchase>
+              <InstallmentsPurchase>en 6 x $2000</InstallmentsPurchase>
               <TextPayPurcharse>Ver todos los medios de pago</TextPayPurcharse>
               <FlavorPurchase>Sabor: Espirulina</FlavorPurchase>
               <QuantityPurchase>Cantidad (4 disponibles)</QuantityPurchase>
@@ -66,7 +74,7 @@ const ContainerCard = styled.div`
  `;
 
  const InputSecurity = styled.input`
-   width: 40%;
+   width: 45%;
    border: none;
    border: 1px solid black;
    border-radius: 5px;

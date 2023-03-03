@@ -12,7 +12,7 @@ import CardDetail from "../components/CardDetail/CardDetail"
 import ShoppingCart from "../components/shopping/ShoppingCart"
 import Alta from "../components/Alta"
 import Form from "../components/Form"
-import CartView from "../components/CartView/CartView"
+// import CartView from "../components/CartView/CartView"
 // import ProductsSearch from "../components/ProductsSearch"  /* Sacar de las rutas, colocar buscador en navbar y resultados aqui luego de navigation */
 // import Error404 from "../components/Error404"
 
@@ -34,7 +34,7 @@ const Rutas = () => {
                 <Route path="/detalleProducto" element={<CardDetail/>}/>
                 <Route path="/alta" element={<Alta/>}/> 
                 <Route path="/form" element={<Form/>} />  
-                <Route path="/cart" element={<CartView/>} />               
+                <Route path="/cart" element={<ShoppingCart/>} />   
                 {/* <Route path="*" element={<Error404/>}/>*/}
             </Routes>
             <Footer />
