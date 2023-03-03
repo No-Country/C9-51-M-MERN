@@ -36,8 +36,7 @@ const Card = ({ product }) => {
                     </Nombres>
                     <PrecioS>$ <p>{price}</p></PrecioS>
                 </div>
-                
-                <ContainerButt>
+                 <ContainerButt>
                     <Link to="/form" className='link' > Comprar</Link>
                     <AddProduct onClick={()=>{<CartView/>; addToCart(_id); handleShow()}}> Agregar al Carrito</AddProduct>
                 </ContainerButt>  
@@ -91,6 +90,12 @@ const CardContainer = styled.figure`
     margin: 20px;
     padding: 35px 20px 20px 20px;
     cursor: pointer;
+
+    div {
+        img {
+            height: 200px;
+        }
+    }
 `
 
 const CardImage = styled.img`
