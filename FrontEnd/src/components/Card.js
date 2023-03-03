@@ -1,14 +1,8 @@
-// import {HiOutlineShoppingCart} from 'react-icons/hi';
 import styled from "styled-components";
 import { useState, useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
-// import CartView from './CartView/CartView';
-import CardDetail from './CardDetail/CardDetail';
-
-
-
 
 
 const Card = ({ product }) => {
@@ -19,34 +13,62 @@ const Card = ({ product }) => {
     const openModal = () => setIsOpen(true)
     const closeModal = () => setIsOpen(false)
 
-    /* ***** Estados del ModalAddCart ***** */
+    /* ** Estados del ModalAddCart ** */
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-    const {id, nombre, precio, quantity, tipo, image} = product
+    const {id, nombre, precio, tipo, image} = product
 
     return (
         <>
             <CardContainer onClick={openModal}>
                 <div>
                     <img src={image} alt={nombre} />
-
                     <Nombres>
                         <Nombre>{nombre}</Nombre>
                         <Tipo>{tipo}</Tipo>
                     </Nombres>
                     <PrecioS>$ <p>{precio}</p></PrecioS>
                 </div>
-                 <ContainerButt>
+                <ContainerButt>
                     <Link to="/form" className='link' > Comprar</Link>
                     <button className='cart' onClick={()=>{ addToCart(id); handleShow()}}> Agregar al Carrito</button>
-
-         
                 </ContainerButt>  
             </CardContainer>
-
-            <Modal key={id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
+            
+            <div style={{backgroundColor:"var(--dark35)", }}>
+                <Modal key={id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
+                    style={{position:'absolute', zIndex:9999, top:'180px', right:'350px', backgroundColor:"#fff", borderRadius:'7px',
+                    border:'1px solid black'  }}>
+                        <ModHeader  closeButton>
+                        ¡El producto fue añadido con éxito!
+                        </ModHeader>
+                        <Modal.Body style={{display:'flex', flexDirection:'column', alignItems:'center', width:'500px'}}>
+                            <ModBody>
+                                <ModImg src={image} alt={tipo} />
+                                <ModText>
+                                    <Nombre><ModText>{nombre}</ModText></Nombre>
+                                    <Tipo><ModText>{tipo} -750ml</ModText></Tipo>
+                                    <ModPrecio>$<p>{`${precio} x 1`}</p></ModPrecio>
+                                </ModText>
+                            </ModBody>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Link to="/cart" className="modCart" onClick={handleClose} >
+                                <ButtonCart variant="secondary" >
+                                    VER CARRITO
+                                </ButtonCart>
+                            </Link>
+                            <Link to="/products" className="modCart" onClick={handleClose} >
+                                <ButtonShop variant="primary" >
+                                    CONTINUAR COMPRANDO
+                                </ButtonShop>
+                            </Link>
+                        </Modal.Footer>
+                </Modal>
+            </div>
+            {/* <Modal key={id} show={show} onHide={handleClose} backdrop="static" keyboard={false} 
                 style={{height: '370px', zIndex: 9999}}>
                     <ModHeader  closeButton>
                     ¡El producto fue añadido con éxito!
@@ -73,7 +95,7 @@ const Card = ({ product }) => {
                             </ButtonShop>
                         </Link>
                     </Modal.Footer>
-            </Modal>
+            </Modal> */}
         </>
     )
 }
@@ -81,10 +103,10 @@ export default Card
 
 
 
-/**** Styles Container ****/
+/** Styles Container **/
 const CardContainer = styled.figure`
-    width: 350px;
-    height: 440px;
+    width: 310px;
+    height: 423px;
     background: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -96,52 +118,15 @@ const CardContainer = styled.figure`
     cursor: pointer;
 
     div {
-   
+        
         img {
             height: 200px;
             display: block;
-            margin: auto;         
+  margin: auto;          
         }
     }
-`;
-
-
-
-/**** Styles Cards ****/
-// const CardFigcaption = styled.figcaption`
-// position: relative;
-// top:-20px;
-// width:100%;
-// height: 35rem;
-// display: flex;
-// flex-direction: column;
-// align-items: center;
-// font-weight: bold;
-// padding-bottom: 0.1rem;
-
-
-// &:hover svg{
-//     fill: var(--orange);
-// }
-// `
-
-// const Favorito = styled.div`
-//     fill: transparent;
-//     cursor: pointer;
-//     height: 45px;
-//     width: 45px;
-//     padding-top: 10px;
-//     position: relative;
-//     left: 100px;
-//     top: 30px;
-//     z-index: 30;
-//     transition: all 300ms;
-
-//     &:active {
-//         transform: scale(1.25, 1.25);
-//         transition: transform .2s;
-//     }
-// `
+    
+`
 
 const Nombres = styled.div`
     display: flex;
@@ -175,9 +160,9 @@ line-height: 45px;
 text-align: center;
 color: #181818;
 top: -10px;
-margin-bottom: 10px;
 display: flex;
 justify-content: center;
+margin: 10px 0;
     
 
   p{
@@ -188,7 +173,7 @@ justify-content: center;
 `
 
 
-/**** Styles Modal *****/
+/** Styles Modal ***/
 
 const ContainerButt= styled.div`
     display: flex;
@@ -254,7 +239,7 @@ const ContainerButt= styled.div`
         }
 `
 
-/**** Styles ModalAddCart ****/
+/** Styles ModalAddCart **/
 const ModHeader = styled.div`
     display: flex;
     flex-direction: column;
@@ -286,6 +271,7 @@ const ModPrecio = styled.p`
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-bottom: 10px;
 
    p{
     font-size: 18px;
@@ -305,6 +291,7 @@ const ButtonCart = styled.button`
     padding: 5px;
     border-radius: 0.5rem;
     border: none;
+    cursor: pointer;
     font-family: "Nunito", sans-serif;
     font-size: 12px;
     text-align: center;
@@ -326,6 +313,7 @@ const ButtonShop = styled.button`
     border-radius: 0.5rem;
     border: 1px solid var(--orange);
     color: var(--orange) ;
+    cursor: pointer;
     background-color: var(--beige);
     font-family: "Nunito", sans-serif;
     font-size: 12px;
@@ -345,4 +333,3 @@ const ButtonShop = styled.button`
     transform: translateY(2px)}
   }
 `
-
